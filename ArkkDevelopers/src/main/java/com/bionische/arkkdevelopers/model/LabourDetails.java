@@ -6,7 +6,7 @@ public class LabourDetails {
 	
 	private int labourId;
 	
-	private String Name;
+	private String name;
 	
 	private String gender;
 	
@@ -44,12 +44,14 @@ public class LabourDetails {
 		this.labourId = labourId;
 	}
 
+	
+
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getGender() {
@@ -134,11 +136,12 @@ public class LabourDetails {
 
 	@Override
 	public String toString() {
-		return "LabourDetails [labourDetailsId=" + labourDetailsId + ", labourId=" + labourId + ", Name=" + Name
+		return "LabourDetails [labourDetailsId=" + labourDetailsId + ", labourId=" + labourId + ", name=" + name
 				+ ", gender=" + gender + ", mobileNo=" + mobileNo + ", address=" + address + ", site=" + site
 				+ ", salary=" + salary + ", deviceId=" + deviceId + ", int1=" + int1 + ", int2=" + int2 + ", string1="
 				+ string1 + ", string2=" + string2 + "]";
 	}
+
 	
 	
 	
