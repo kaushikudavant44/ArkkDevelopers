@@ -6,7 +6,7 @@ public class EmployeeDetails {
 	
 	private int empId;
 	
-	private String Name;
+	private String name;
 	
 	private String gender;
 	
@@ -54,12 +54,14 @@ public class EmployeeDetails {
 		this.empId = empId;
 	}
 
+	
+
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getGender() {
@@ -184,18 +186,13 @@ public class EmployeeDetails {
 
 	@Override
 	public String toString() {
-		return "EmployeeDetails [empDetailsId=" + empDetailsId + ", empId=" + empId + ", Name=" + Name + ", gender="
+		return "EmployeeDetails [empDetailsId=" + empDetailsId + ", empId=" + empId + ", name=" + name + ", gender="
 				+ gender + ", dob=" + dob + ", email=" + email + ", mobileNo=" + mobileNo + ", address=" + address
 				+ ", branch=" + branch + ", designation=" + designation + ", salary=" + salary + ", deviceId="
 				+ deviceId + ", photo=" + photo + ", document=" + document + ", int1=" + int1 + ", int2=" + int2
 				+ ", string1=" + string1 + ", string2=" + string2 + "]";
 	}
-	
-	
-	
-	
-	
-	
+
 	
 
 }
