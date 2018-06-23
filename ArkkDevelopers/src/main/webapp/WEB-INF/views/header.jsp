@@ -93,6 +93,14 @@
           <li><a href="configuration.html"><i class="fa fa-circle-o"></i>Multiple Branches Employee's</a></li>
         </ul>
       </li>
+      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Labour Account Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <ul class="treeview-menu">
+        
+          <li><a href="${pageContext.request.contextPath}/showLabourDetails"><i class="fa fa-circle-o"></i>Add Labour</a></li>
+          <li><a href="${pageContext.request.contextPath}/showGetLabourDetails"><i class="fa fa-circle-o"></i>Show Labour</a></li>
+          <li><a href="configuration.html"><i class="fa fa-circle-o"></i>Multiple Site Labour</a></li>
+        </ul>
+      </li>
       <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Reports</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span></a>
         <ul class="treeview-menu">
           <li><a href="company-details.html"><i class="fa fa-circle-o"></i>Attendance Report</a></li>
