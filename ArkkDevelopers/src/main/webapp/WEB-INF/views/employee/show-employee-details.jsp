@@ -43,7 +43,10 @@
                 <th>Delete</th>
                 <th>Edit</th>
               </tr>
+             <tbody>
              
+             
+             </tbody>
               
              
             </table>
@@ -66,7 +69,7 @@
  function getEmployeeByBranch() {
 											 
 		 var branchId=document.getElementById("branch").value; 
-		 $('#example2 tr').remove();
+		
 		  
 		 $
 														.getJSON(
@@ -113,7 +116,7 @@
  function getEmployeeById() {
 											 
 		 var empId=document.getElementById("empId").value; 
-		 $('#example2 tr').remove();
+		
 		  
 		 $
 														.getJSON(
