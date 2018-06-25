@@ -1,17 +1,23 @@
 package com.bionische.arkkdevelopers.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bionische.arkkdevelopers.common.Constants;
-import com.bionische.arkkdevelopers.model.Info;
+import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.LabourDetails;
 
 /**
@@ -41,6 +47,27 @@ public class LabourController {
 	public ModelAndView showLabourDetails(HttpSession session, HttpServletRequest request) {
 		
 	ModelAndView model=new ModelAndView("labour/labour-details");
+		return model;
+	}
+	
+	/**
+	 * Show labour registration page.
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/showGetLabourDetails", method = RequestMethod.GET)
+	public ModelAndView showGetLabourDetails(HttpSession session, HttpServletRequest request) {
+		
+	ModelAndView model=new ModelAndView("labour/show-labour-details");
+	List<BranchSiteDetails> branchSiteDetailsList=new ArrayList<BranchSiteDetails>(); 
+	int type=2;
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("type",""+type);
+	branchSiteDetailsList=rest.postForObject(Constants.url+"/getBranchSiteDetailsByType", map, List.class);
+	System.out.println("cdnscbh"+branchSiteDetailsList.toString());
+	model.addObject("branchSiteDetailsList",branchSiteDetailsList);
+	
 		return model;
 	}
 	
@@ -98,23 +125,62 @@ public class LabourController {
 		return ret+"showLabourDetails";
 	}
 	
-	/**
-	 * 
-	 * @param req
-	 * @param res
-	 * @param file
-	 * @return
-	 */
-	@RequestMapping(value = "/getLabourDetails", method = RequestMethod.POST)
-	public String getLabourDetails(HttpServletRequest req, HttpServletResponse res)
-	{
-		String ret="redirect:/";
-		LabourDetails LabourDetails=new LabourDetails();
-		ModelAndView model =new ModelAndView("labour-details");
+	
+	@RequestMapping(value = "/getLabourDetailsById", method = RequestMethod.GET)
+	public @ResponseBody LabourDetails getLabourDetailsById(HttpServletRequest request,HttpServletResponse response) {
 		
+		System.out.println("In Ajax");
+		int labourId=Integer.parseInt(request.getParameter("labourId"));
+		System.out.println(labourId);
+		LabourDetails labourDetails=new LabourDetails();
 		
-		return ret+"showLabourDetails";
+		try {
+		
+			RestTemplate rest=new RestTemplate();
+			MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+			map.add("labourId",""+labourId);
+			labourDetails =  rest.postForObject(Constants.url + "/getLabourDetailsByLabourId", map, LabourDetails.class);
+			System.out.println(""+labourDetails.toString());
+			
+		}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			return labourDetails;
+		
 	}
 	
+	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "/getLabourDetailsByBranch", method = RequestMethod.GET)
+	public @ResponseBody LabourDetails getLabourDetailsByBranch(HttpServletRequest request,HttpServletResponse response) {
+		
+		System.out.println("In Ajax");
+		int labourId=Integer.parseInt(request.getParameter("labourId"));
+		System.out.println(labourId);
+		LabourDetails labourDetails=new LabourDetails();
+		
+		try {
+		
+			RestTemplate rest=new RestTemplate();
+			MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+			map.add("labourId",""+labourId);
+			labourDetails =  rest.postForObject(Constants.url + "/getLabourDetailsByLabourId", map, LabourDetails.class);
+			System.out.println(""+labourDetails.toString());
+			
+		}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			return labourDetails;
+		
+	}
 	
 }
