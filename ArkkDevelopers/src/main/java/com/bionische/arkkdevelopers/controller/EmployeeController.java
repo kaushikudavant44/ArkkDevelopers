@@ -139,7 +139,30 @@ public class EmployeeController {
 	try {
 		employeeDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByBranch",map,List .class);
 	
-	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+	System.out.println("employeeDetailsssss "+employeeDetails.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return employeeDetails;
+	}
+	
+	@RequestMapping(value = "/showEmployeeDetailsById", method = RequestMethod.GET)
+	public @ResponseBody EmployeeDetails showEmployeeDetailsById(HttpSession session, HttpServletRequest request) {
+		
+	ModelAndView model=new ModelAndView("employee/show-employee-details");
+	 EmployeeDetails employeeDetails=new EmployeeDetails();
+	 
+	 String empId=request.getParameter("empId");
+	
+	BranchSiteDetails branchSiteDetails=new BranchSiteDetails();
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("empId",empId);
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		employeeDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,EmployeeDetails .class);
+	
+	System.out.println("employeeDetailsssss "+employeeDetails.toString());
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}

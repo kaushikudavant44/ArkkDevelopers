@@ -1,14 +1,15 @@
 <%@ include file="../header.jsp" %>
 <section class="content index">
 <c:url var="showEmployeeDetailsByBranch" value="/showEmployeeDetailsByBranch" />
+<c:url var="showEmployeeDetailsById" value="/showEmployeeDetailsById" />
   <div class="1middle-bg">
     <div class="row">
       <div class="col-md-5">
-        <input name="message" placeholder="Search employee ..." class="form-control input-lg" type="text">
+        <input placeholder="Search employee ..." class="form-control input-lg" type="text" name="empId" id="empId">
         <span class="glyphicon glyphicon-search search-icon"></span> </div>
         
         <div class="col-md-2">
-        <input class="form-control" type="submit">
+        <input class="form-control" type="submit" onclick="getEmployeeById()">
         </div>
         <div class="col-md-5">
        
@@ -65,7 +66,7 @@
  function getEmployeeByBranch() {
 											 
 		 var branchId=document.getElementById("branch").value; 
-		 //$('#stateId option').remove();
+		 $('#example2 tr').remove();
 		  
 		 $
 														.getJSON(
@@ -100,6 +101,50 @@
 																	
 																 	 $('#example2').append(tr);
 																			})
+
+
+																})
+		 
+		 
+	 }
+	</script>
+<script>
+
+ function getEmployeeById() {
+											 
+		 var empId=document.getElementById("empId").value; 
+		 $('#example2 tr').remove();
+		  
+		 $
+														.getJSON(
+																'${showEmployeeDetailsById}',
+																{
+																	empId : empId,
+																	
+																	ajax : 'true'
+																},
+																function(data) {
+																	
+																	
+
+																	var tr = $('<tr></tr>');
+																	
+
+																	tr.append($('<td></td>').html(1));
+																	
+																	tr.append($('<td></td>').html(data.name));
+																	tr.append($('<td></td>').html(data.branch));
+																	tr.append($('<td></td>').html(data.mobileNo));
+																	tr.append($('<td></td>').html(data.email));
+																	tr.append($('<td></td>').html(data.gender));
+																	tr.append($('<td></td>').html(data.salary));
+																	tr.append($('<td></td>').html(data.address));
+																	tr.append($('<td></td>').html(data.gender));
+																	tr.append($('<td></td>').html(data.gender));
+																	
+																	
+																 	 $('#example2').append(tr);
+																			
 
 
 																})
