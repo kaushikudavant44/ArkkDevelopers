@@ -2,6 +2,7 @@
 <section class="content index">
 <c:url var="showEmployeeDetailsByBranch" value="/showEmployeeDetailsByBranch" />
 <c:url var="showEmployeeDetailsById" value="/showEmployeeDetailsById" />
+<c:url var="deleteEmployeeDetailsById" value="/deleteEmployeeDetailsById" />
   <div class="1middle-bg">
     <div class="row">
       <div class="col-md-5">
@@ -47,8 +48,7 @@
              
              
              </tbody>
-              
-             
+                      
             </table>
             </div>
             <div class="bottom-btn">
@@ -98,8 +98,8 @@
 																	tr.append($('<td></td>').html(data.gender));
 																	tr.append($('<td></td>').html(data.salary));
 																	tr.append($('<td></td>').html(data.address));
-																	tr.append($('<td></td>').html(data.gender));
-																	tr.append($('<td></td>').html(data.gender));
+																	tr.append($('<td></td>').html('<span onclick="deleteEmpById('+data.empId+')" class="glyphicon glyphicon-trash"></span>'));
+																	tr.append($('<td></td>').html('<span onclick="editEmpById('+data.empId+')" class="glyphicon glyphicon-edit"></span>'));
 																	
 																	
 																 	 $('#example2').append(tr);
@@ -128,8 +128,6 @@
 																},
 																function(data) {
 																	
-																	
-
 																	var tr = $('<tr></tr>');
 																	
 
@@ -142,12 +140,34 @@
 																	tr.append($('<td></td>').html(data.gender));
 																	tr.append($('<td></td>').html(data.salary));
 																	tr.append($('<td></td>').html(data.address));
-																	tr.append($('<td></td>').html(data.gender));
-																	tr.append($('<td></td>').html(data.gender));
+																	tr.append($('<td></td>').html('<span onclick="deleteEmpById('+data.empId+')" class="glyphicon glyphicon-trash"></span>'));
+																	tr.append($('<td></td>').html('<span onclick="editEmpById('+data.empId+')" class="glyphicon glyphicon-edit"></span>'));
 																	
 																	
 																 	 $('#example2').append(tr);
 																			
+
+
+																})
+		 
+		 
+	 }
+
+ function deleteEmpById(empId) {
+								 
+		  alert(empId);
+		 $
+														.getJSON(
+																'${deleteEmployeeDetailsById}',
+																{
+																	empId : empId,
+																	
+																	ajax : 'true'
+																},
+																function(data) {
+																	alert(data.message)
+																	location.reload();
+																	
 
 
 																})
