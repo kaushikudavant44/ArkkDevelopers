@@ -64,6 +64,8 @@
     </div>
   </div>
 </section>
+
+
 <script>
 
  function getEmployeeByBranch() {
@@ -99,7 +101,7 @@
 																	tr.append($('<td></td>').html(data.salary));
 																	tr.append($('<td></td>').html(data.address));
 																	tr.append($('<td></td>').html('<span onclick="deleteEmpById('+data.empId+')" class="glyphicon glyphicon-trash"></span>'));
-																	tr.append($('<td></td>').html('<span onclick="editEmpById('+data.empId+')" class="glyphicon glyphicon-edit"></span>'));
+																	tr.append($('<td></td>').html('<span onclick="editEmpById()" class="glyphicon glyphicon-edit"></span>'));
 																	
 																	
 																 	 $('#example2').append(tr);
@@ -141,7 +143,7 @@
 																	tr.append($('<td></td>').html(data.salary));
 																	tr.append($('<td></td>').html(data.address));
 																	tr.append($('<td></td>').html('<span onclick="deleteEmpById('+data.empId+')" class="glyphicon glyphicon-trash"></span>'));
-																	tr.append($('<td></td>').html('<span onclick="editEmpById('+data.empId+')" class="glyphicon glyphicon-edit"></span>'));
+																	tr.append($('<td></td>').html('<span onclick="editEmpById()" class="glyphicon glyphicon-edit"></span>'));
 																	
 																	
 																 	 $('#example2').append(tr);
@@ -174,8 +176,57 @@
 		 
 		 
 	 }
+ 
+ function editEmpById() {
+	 
+	 alert("hi");
+	 $('#myModal').modal('show');
+	 
+	 
+}
 	</script>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+               
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Employee Id :</label>
+                    <input type="text" class="form-control" name="empId" id="empId" placeholder="employee id">
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Employee Id :</label>
+                    <input type="text" class="form-control" name="empId" id="empId" placeholder="employee id">
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Employee Id :</label>
+                    <input type="text" class="form-control" name="empId" id="empId" placeholder="employee id">
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Employee Id :</label>
+                    <input type="text" class="form-control" name="empId" id="empId" placeholder="employee id">
+                  </div>
+                  </div>
+                </div>   ...
+      </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 <%@ include file="../footer.jsp" %>
+<!--Employee Details Edit  Modal -->
