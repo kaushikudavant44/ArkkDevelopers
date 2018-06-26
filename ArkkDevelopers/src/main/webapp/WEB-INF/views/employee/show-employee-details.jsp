@@ -47,7 +47,20 @@
                 <th>Edit</th>
               </tr>
              <tbody>
-             
+                <tr>
+                <td>1</td>
+                <td>${employeeDetails.name}</td>
+                <td>${employeeDetails.branch}</td>
+                <td>${employeeDetails.mobileNo}</td>
+                <td>${employeeDetails.email}</td>
+                <td>${employeeDetails.gender}</td>
+                <td>${employeeDetails.dob}</td>
+                <td>${employeeDetails.designation}</td>
+                <td>${employeeDetails.salary}</td>
+                <td>${employeeDetails.address}</td>
+                <td><span onclick="deleteEmpById(${employeeDetails.empId})" class="glyphicon glyphicon-trash"></span></td>
+                <td><span onclick="editEmpById(${employeeDetails.empId})" class="glyphicon glyphicon-edit"></span></td>
+              </tr>
              
              </tbody>
                       

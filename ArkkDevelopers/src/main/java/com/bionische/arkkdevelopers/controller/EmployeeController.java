@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -196,7 +197,7 @@ public class EmployeeController {
 	{
 		
 		System.out.println("came");
-		String url=null;
+		String url="/showUpdatedEmployeeDetailsById/"+Integer.parseInt(req.getParameter("empId"));
 		ModelAndView model =new ModelAndView("employee/show-employee-details");
 		
 		EmployeeDetails employeeDetails=new EmployeeDetails();
@@ -238,5 +239,27 @@ public class EmployeeController {
 		}
 		
 		return "redirect:"+url;
+	}
+	@RequestMapping(value = "/showUpdatedEmployeeDetailsById/{empId}", method = RequestMethod.GET)
+	public ModelAndView showUpdatedEmployeeDetailsById(HttpSession session, HttpServletRequest request,@PathVariable("empId") int empId) {
+		
+	ModelAndView model=new ModelAndView("employee/show-employee-details");
+	
+	 EmployeeDetails employeeDetails=new EmployeeDetails();
+
+	
+	
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("empId",empId);
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		employeeDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,EmployeeDetails .class);
+		model.addObject("employeeDetails", employeeDetails);
+	System.out.println("employeeDetailsssss "+employeeDetails.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return model;
 	}
 }
