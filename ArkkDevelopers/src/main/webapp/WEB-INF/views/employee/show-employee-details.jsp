@@ -67,7 +67,6 @@
   </div>
 </section>
 
-
 <script>
 
  function getEmployeeByBranch() {
