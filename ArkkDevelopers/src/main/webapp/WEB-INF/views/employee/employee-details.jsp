@@ -16,13 +16,13 @@
                 <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Employee Id :</label>
-                    <input type="number" class="form-control" name="empId" id="empId" placeholder="employee id">
+                    <input type="text" class="form-control" name="empId" id="empId" placeholder="employee id">
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Name :</label>
-                    <input type="text" class="form-control" id="name" name="labourName" placeholder="First name">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="First name">
                   </div>
                 </div>              
                
@@ -58,13 +58,20 @@
                     <label for="exampleInputEmail1">Branch :</label>
                     <select class="form-control" id="branch" name="branch">
                       <option>-- please Select --</option>
+                      <option>aark</option>
                     </select>
                   </div>
                 </div>
                  <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Device Id :</label>
-                    <input type="text" class="form-control" id="deviceId" name="deviceId" placeholder="First name">
+                    <input type="text" class="form-control" id="deviceId" name="deviceId" placeholder="device id">
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Designation :</label>
+                    <input type="text" class="form-control" id="designation" name="designation" placeholder="designation">
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
@@ -73,25 +80,25 @@
                     <input type="text" class="form-control" id="salary" name="salary" placeholder="Salary">
                   </div>
                 </div>
-                <div class="col-md-12 col-sm-12">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Address</label>
-                    <textarea class="form-control" placeholder="Address " id="address" name="address" rows="3"></textarea>
-                  </div>
-                </div>
+                
                <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Photo :</label>
-                    <input type="text" class="form-control" id="photo" name="photo" placeholder="photo">
+                    <input type="file" class="form-control" id="photo" name="photo" placeholder="photo" accept="image/*">
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Document :</label>
-                    <input type="text" class="form-control" id="document" name="document" placeholder="Document">
+                    <input type="file" class="form-control" id="document" name="document" placeholder="Document" accept="image/*">
                   </div>
                 </div>
-                
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Address</label>
+                    <textarea class="form-control" placeholder="Address " id="address" name="address" rows="3" col="3"></textarea>
+                  </div>
+                </div>
                 
                 <div class="col-md-12 col-sm-12">
                   <div class="form-group">

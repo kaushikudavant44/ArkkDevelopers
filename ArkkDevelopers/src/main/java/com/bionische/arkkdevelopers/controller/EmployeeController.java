@@ -169,6 +169,7 @@ public class EmployeeController {
 		return employeeDetails;
 	}
 
+	
 	@RequestMapping(value = "/deleteEmployeeDetailsById", method = RequestMethod.GET)
 	public @ResponseBody Info deleteEmployeeDetailsById(HttpSession session, HttpServletRequest request) {
 		
