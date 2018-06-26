@@ -31,29 +31,6 @@
 
 </script> 
 
-<script>			                
-
-function clearText()
-	{
-								document.getElementId('text1').value="";
-								document.getElementById(text2).value="";
-								document.getElementById(initial).value="";
-								document.getElementById(firstName).value="";
-								document.getElementById(lastName).value="";
-								document.getElementById(countryCode).value="";
-								document.getElementById(mobileNumbder).value="";
-								document.getElementById(grender).value="";
-								document.getElementById(email).value="";
-								document.getElementById(qualification).value="";
-								document.getElementById(designation).value="";
-								document.getElementById(empId).value="";
-								document.getElementById(branch).value="";
-								document.getElementById(salary).value="";
-								document.getElementById(email).value="";
-								
-		}
-							
-							</script>
 						</div>
 					</div>
 				</div>
