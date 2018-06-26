@@ -23,6 +23,7 @@ import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.common.VpsImageUpload;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.EmployeeDetails;
+import com.bionische.arkkdevelopers.model.Info;
 
 @Controller
 public class EmployeeController {
@@ -57,12 +58,12 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/saveEmployeeDetails", method = RequestMethod.POST)
-	public String saveLabourDetails(HttpServletRequest req, HttpServletResponse res)
+	public String saveEmployeeDetails(HttpServletRequest req, HttpServletResponse res)
 	{
 		
 		System.out.println("came");
 		String url=null;
-		ModelAndView model =new ModelAndView("labour-details");
+		ModelAndView model =new ModelAndView("employee-details");
 		
 		EmployeeDetails employeeDetails=new EmployeeDetails();
 		
@@ -91,7 +92,6 @@ public class EmployeeController {
 			 
 			e1.printStackTrace();
 		}*/
-	
 	
 		
 		employeeDetails.setEmpId(Integer.parseInt(req.getParameter("empId")));
@@ -146,7 +146,6 @@ public class EmployeeController {
 		return employeeDetails;
 	}
 
-	
 	@RequestMapping(value = "/showEmployeeDetailsById", method = RequestMethod.GET)
 	public @ResponseBody EmployeeDetails showEmployeeDetailsById(HttpSession session, HttpServletRequest request) {
 		
@@ -169,5 +168,74 @@ public class EmployeeController {
 	}
 		return employeeDetails;
 	}
-
+	
+	@RequestMapping(value = "/deleteEmployeeDetailsById", method = RequestMethod.GET)
+	public @ResponseBody Info deleteEmployeeDetailsById(HttpSession session, HttpServletRequest request) {
+		
+	 Info info=new Info();
+	 
+	 String empId=request.getParameter("empId");
+	 System.out.println("employeeid:"+empId);
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("empId",empId);
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		info=rest.postForObject(Constants.url+"deleteEmployeeById",map,Info .class);
+	
+	System.out.println("info "+info.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return info;
+	}
+	
+	@RequestMapping(value = "/updateEmployeeDetails", method = RequestMethod.POST)
+	public String updateEmployeeDetails(HttpServletRequest req, HttpServletResponse res)
+	{
+		
+		System.out.println("came");
+		String url=null;
+		ModelAndView model =new ModelAndView("employee/show-employee-details");
+		
+		EmployeeDetails employeeDetails=new EmployeeDetails();
+		
+		String profilePhotoName="ambi";
+		String documentName="ambi";
+	
+	    String empDetailsId=req.getParameter("empId");
+	    if(empDetailsId!=null||empDetailsId!="")
+	    {
+	    	employeeDetails.setEmpDetailsId(Integer.parseInt(empDetailsId));
+	    }
+		
+		employeeDetails.setEmpId(Integer.parseInt(req.getParameter("empId")));
+		employeeDetails.setName(req.getParameter("name"));
+		employeeDetails.setGender(req.getParameter("gender"));
+		employeeDetails.setBranch(req.getParameter("branch"));
+		employeeDetails.setDeviceId(Integer.parseInt(req.getParameter("deviceId")));
+		employeeDetails.setAddress(req.getParameter("address"));
+		employeeDetails.setDesignation(req.getParameter("designation"));
+		employeeDetails.setDob(req.getParameter("dob"));
+		employeeDetails.setMobileNo((req.getParameter("mobileNo")));
+		employeeDetails.setEmail(req.getParameter("email"));
+		employeeDetails.setPhoto(profilePhotoName);
+		employeeDetails.setDocument(documentName);
+		employeeDetails.setInt1(0);
+		employeeDetails.setInt2(0);
+		employeeDetails.setString1("1");
+		employeeDetails.setString2("1");
+	
+		System.out.println("employeeDetails:"+employeeDetails.toString());
+		RestTemplate rest=new RestTemplate();
+		try {
+			employeeDetails=rest.postForObject(Constants.url+"insertEmployeeDetails", employeeDetails,EmployeeDetails .class);
+		
+		System.out.println("response "+employeeDetails.toString());
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return "redirect:"+url;
+	}
 }
