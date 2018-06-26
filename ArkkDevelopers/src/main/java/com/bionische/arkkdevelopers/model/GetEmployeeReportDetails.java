@@ -1,5 +1,6 @@
 package com.bionische.arkkdevelopers.model;
 
+
 public class GetEmployeeReportDetails {
 	
 	private int empId;

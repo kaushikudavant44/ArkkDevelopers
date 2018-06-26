@@ -271,6 +271,7 @@ public class EmployeeController {
 	
 		return model;
 	}
+
 	
 	@RequestMapping(value = "/getEmployeeReport", method = RequestMethod.GET)
 	public ModelAndView getEmployeeReport(HttpSession session, HttpServletRequest request) {
