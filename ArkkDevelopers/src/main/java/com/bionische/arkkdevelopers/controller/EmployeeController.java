@@ -24,6 +24,7 @@ import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.common.VpsImageUpload;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.EmployeeDetails;
+import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
 import com.bionische.arkkdevelopers.model.Info;
 
 @Controller
@@ -257,6 +258,56 @@ public class EmployeeController {
 		employeeDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,EmployeeDetails .class);
 		model.addObject("employeeDetails", employeeDetails);
 	System.out.println("employeeDetailsssss "+employeeDetails.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return model;
+	}
+	
+	@RequestMapping(value = "/showEmployeeReport", method = RequestMethod.GET)
+	public ModelAndView showEmployeeReport(HttpSession session, HttpServletRequest request0) {
+		
+	ModelAndView model=new ModelAndView("employee/employee-reports");
+	
+		return model;
+	}
+	
+	@RequestMapping(value = "/getEmployeeReport", method = RequestMethod.GET)
+	public ModelAndView getEmployeeReport(HttpSession session, HttpServletRequest request) {
+		
+	ModelAndView model=new ModelAndView("employee/show-employee-details");
+	
+	List<GetEmployeeReportDetails> employeeReportDetails=new ArrayList<GetEmployeeReportDetails>();
+
+	String empId=request.getParameter("empId");
+	String branchId=request.getParameter("branchId");
+	String from=request.getParameter("from");
+	String to=request.getParameter("to");
+	
+	
+	
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("empId",empId);
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		if(empId!=null&&empId!="")
+		{
+			map.add("empId",empId);
+			map.add("from",from);
+			map.add("to",to);
+			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
+		}
+		else
+		{
+			map.add("branchId",branchId);
+			map.add("from",from);
+			map.add("to",to);
+			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
+		}
+		
+		model.addObject("employeeReportDetails", employeeReportDetails);
+	System.out.println("employeeReportDetails "+employeeReportDetails.toString());
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}
