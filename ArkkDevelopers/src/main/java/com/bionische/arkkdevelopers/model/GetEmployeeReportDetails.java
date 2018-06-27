@@ -3,11 +3,11 @@ package com.bionische.arkkdevelopers.model;
 
 public class GetEmployeeReportDetails {
 	
-	private int empId;
+	private int userId;
 	
 	private String name;
 	
-	private String branch;
+	private String branchSite;
 	
 	private String date;
 	
@@ -16,21 +16,22 @@ public class GetEmployeeReportDetails {
 	private String outTime;
 	
 
-	public int getEmpId() {
-		return empId;
+	
+
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setEmpId(int empId) {
-		this.empId = empId;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-
-	public String getBranch() {
-		return branch;
+	public String getBranchSite() {
+		return branchSite;
 	}
 
-	public void setBranch(String branch) {
-		this.branch = branch;
+	public void setBranchSite(String branchSite) {
+		this.branchSite = branchSite;
 	}
 
 	public String getDate() {
@@ -67,9 +68,10 @@ public class GetEmployeeReportDetails {
 
 	@Override
 	public String toString() {
-		return "GetEmployeeReportDetails [empId=" + empId + ", name=" + name + ", branch=" + branch + ", date=" + date
-				+ ", inTime=" + inTime + ", outTime=" + outTime + "]";
+		return "GetEmployeeReportDetails [userId=" + userId + ", name=" + name + ", branchSite=" + branchSite
+				+ ", date=" + date + ", inTime=" + inTime + ", outTime=" + outTime + "]";
 	}
+
 	
 	
 	
