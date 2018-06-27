@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
+import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
 import com.bionische.arkkdevelopers.model.Info;
 import com.bionische.arkkdevelopers.model.LabourDetails;
 
@@ -296,6 +297,107 @@ public class LabourController {
 		
 	}
 
+	/**
+	 * 
+	 */
+
+	@RequestMapping(value = "/getLabourReport", method = RequestMethod.GET)
+	public ModelAndView getEmployeeReport(HttpSession session, HttpServletRequest request) {
 		
+	ModelAndView model=new ModelAndView("labour/labour-reports");
+	
+	List<GetEmployeeReportDetails> getLabourReportDetailsList=new ArrayList<GetEmployeeReportDetails>();
+	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
+	
+	String userId=request.getParameter("labourId");
+	String siteId=request.getParameter("siteId");
+	String from=request.getParameter("from");
+	String to=request.getParameter("to");
+	System.out.println("LabourId="+userId+"cds"+siteId+"cdsc"+from+"cdsc"+to);
+	
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		if(userId!=null&&userId!="")
+		{
+			
+			map.add("userId",userId);
+			map.add("from",from);
+			map.add("to",to);
+			
+			getLabourReportDetailsList=rest.postForObject(Constants.url+"getEmpAttendenceByLabourIdAndDate",map,List .class);
+			
+		}
+		else if(siteId!=null&&siteId!="")
+		{
+			map.add("userId",userId);
+			map.add("from",from);
+			map.add("to",to);
+			getLabourReportDetailsList=rest.postForObject(Constants.url+"getEmpAttendenceByLabourIdAndDate",map,List .class);
+		}
+
+		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
+		mapBranch.add("type",2);
+		
+		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
+		
+		model.addObject("branchSiteDetails", branchSiteDetails);
+		model.addObject("getLabourReportDetailsList", getLabourReportDetailsList);
+	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return model;
+	}
+	
+	@RequestMapping(value = "/getLabourSalary", method = RequestMethod.GET)
+	public ModelAndView getEmployeeSalary(HttpSession session, HttpServletRequest request) {
+		
+	ModelAndView model=new ModelAndView("labour/labour-salary");
+	
+	List<GetEmployeeReportDetails> getLabourReportDetailsList=new ArrayList<GetEmployeeReportDetails>();
+	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
+	
+	String labourId=request.getParameter("labourId");
+	String siteId=request.getParameter("siteId");
+	String from=request.getParameter("from");
+	String to=request.getParameter("to");
+	
+	
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		if(labourId!=null&&labourId!="")
+		{
+			map.add("labourId",labourId);
+			map.add("from",from);
+			map.add("to",to);
+			getLabourReportDetailsList=rest.postForObject(Constants.url+"getLabourDetailsByEmpId",map,List .class);
+		}
+		else if(siteId!=null&&siteId!="")
+		{
+			map.add("siteId",siteId);
+			map.add("from",from);
+			map.add("to",to);
+			getLabourReportDetailsList=rest.postForObject(Constants.url+"getLabourDetailsByEmpId",map,List .class);
+		}
+
+		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
+		mapBranch.add("type",2);
+		
+		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
+		
+		model.addObject("branchSiteDetails", branchSiteDetails);
+		/*model.addObject("employeeReportDetails", employeeReportDetails);*/
+	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return model;
+	}
+	
+	
 	
 }
