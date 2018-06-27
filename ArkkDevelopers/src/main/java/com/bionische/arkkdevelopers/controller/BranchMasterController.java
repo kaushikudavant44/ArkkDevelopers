@@ -54,6 +54,7 @@ public class BranchMasterController {
 		branchSiteDetails.setInt_1(0);
 		branchSiteDetails.setInt_2(0);
 		branchSiteDetails.setName(request.getParameter("name"));
+		branchSiteDetails.setDeviceId(Integer.parseInt(request.getParameter("deviceId")));
 		branchSiteDetails.setString_1("");
 		branchSiteDetails.setString_2("");
 		branchSiteDetails.setType(Integer.parseInt(request.getParameter("type")));

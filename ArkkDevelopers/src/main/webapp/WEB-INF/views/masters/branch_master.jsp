@@ -29,6 +29,13 @@
                     <input type="text"  class="form-control" id="name" name="name" placeholder="Type Branch name..." required>
                   </div>
                 </div>
+                
+                <div class="col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Device Id :</label>
+                    <input type="text"  class="form-control" id="deviceId" name="deviceId" placeholder="Device Id..." required>
+                  </div>
+                </div>
                  
                  
                 <div class="col-md-12 col-sm-12">
@@ -72,7 +79,9 @@
                 <thead>
                   <tr>
                     <th>Branch/Site Name</th>
+                
                     <th>Type</th>
+                        <th>Device Id</th>
                     <th>Date</th>
                     <th>Edit</th>
                   </tr>
@@ -94,7 +103,7 @@
                    
                    </c:choose>
                     
-                    
+                     <td>${branchSiteDetailsList.deviceId}</td>
                     <td>${branchSiteDetailsList.date}</td>
                     <td align="center"><a href="#" data-toggle="modal" data-target="#squarespaceModal"><span class="glyphicon glyphicon-trash"></span></a></td>
                   </tr>
