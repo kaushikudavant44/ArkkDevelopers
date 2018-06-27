@@ -41,7 +41,26 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/adminlte.min.js"></script> 
 
-
+<script>
+$(function () {
+    $('.datepicker1').datepicker({
+        
+        format: 'yyyy-mm-dd'
+    });
+});
+$(function () {
+    $('.datepicker2').datepicker({
+        
+        format: 'yyyy-mm-dd'
+    });
+});
+$(function () {
+    $('.datepicker3').datepicker({
+        
+        format: 'yyyy-mm-dd'
+    });
+});
+</script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -95,7 +114,7 @@
         </ul>
       </li>
      
-      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Employee Account Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Employee Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
         
           <li><a href="${pageContext.request.contextPath}/showEmployeeRegistration"><i class="fa fa-circle-o"></i>Add Employee</a></li>
@@ -103,7 +122,7 @@
           <li><a href="configuration.html"><i class="fa fa-circle-o"></i>Multiple Branches Employee's</a></li>
         </ul>
       </li>
-      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Labour Account Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Labour Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
         
            <li><a href="${pageContext.request.contextPath}/showLabourDetails"><i class="fa fa-circle-o"></i>Add Labour</a></li>

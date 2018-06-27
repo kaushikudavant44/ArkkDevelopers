@@ -44,13 +44,13 @@
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Start date :</label>
-                          <input type="text" class="form-control" name="from" id="from" placeholder="From Date">
+                          <input type="text" class="form-control datepicker1" name="from" id="from" placeholder="From Date">
                         </div>
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">End date :</label>
-                          <input type="text" class="form-control" name="to" id="to" placeholder="To Date">
+                          <input type="text" class="form-control datepicker2" name="to" id="to" placeholder="To Date">
                         </div>
                       </div>
                     </div>

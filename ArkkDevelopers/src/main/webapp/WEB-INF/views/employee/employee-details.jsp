@@ -38,7 +38,8 @@
                 <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">DOB :</label>
-                    <input type="text" class="form-control" id="dob" name="dob" placeholder="dob">
+                    <input type="text" class="form-control datepicker1" id="dob" name="dob" placeholder="dob">
+                    
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
@@ -113,4 +114,8 @@
     </div>
   </div>
 </section>
+
+
+
+
 <%@ include file="../footer.jsp" %>
