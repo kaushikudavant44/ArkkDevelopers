@@ -35,7 +35,15 @@ public class LabourController {
 	@RequestMapping(value = "/showManualAttendance", method = RequestMethod.GET)
 	public ModelAndView showManualAttendance(HttpSession session, HttpServletRequest request) {
 		
-	ModelAndView model=new ModelAndView("manual-attendance");
+	List<BranchSiteDetails> branchSiteDetailsList=new ArrayList<BranchSiteDetails>(); 	
+	ModelAndView model=new ModelAndView("labour/labour-manual-attendance");
+	
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("type",2);
+	
+	branchSiteDetailsList=rest.postForObject(Constants.url+"/getBranchSiteDetailsByType", map, List.class);
+	
+	model.addObject("branchSiteDetailsList",branchSiteDetailsList);
 		return model;
 	}
 	
