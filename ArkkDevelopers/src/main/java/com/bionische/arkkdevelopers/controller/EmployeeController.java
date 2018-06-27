@@ -323,7 +323,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/getEmployeeSalary", method = RequestMethod.GET)
 	public ModelAndView getEmployeeSalary(HttpSession session, HttpServletRequest request) {
 		
-	ModelAndView model=new ModelAndView("employee/employee-reports");
+	ModelAndView model=new ModelAndView("employee/employee-salary");
 	
 	List<GetEmployeeReportDetails> employeeReportDetails=new ArrayList<GetEmployeeReportDetails>();
 	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
