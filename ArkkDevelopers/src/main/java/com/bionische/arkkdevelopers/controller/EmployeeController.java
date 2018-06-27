@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.common.VpsImageUpload;
+import com.bionische.arkkdevelopers.model.AttendanceDetails;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.EmployeeDetails;
 import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
@@ -170,6 +171,37 @@ public class EmployeeController {
 	}
 		return employeeDetails;
 	}
+	
+	@RequestMapping(value = "/manualAttendanceById", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView manualAttendanceById(HttpSession session, HttpServletRequest request) {
+		
+	ModelAndView model=new ModelAndView("employee/employee-manual-attendance");
+	 EmployeeDetails employeeDetails=new EmployeeDetails();
+	 List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
+	 
+	 MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	 MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
+	 mapBranch.add("type",1);
+	 
+	 String empId=request.getParameter("empId");
+	 
+	if(empId!=null&&empId!="")
+	{
+	map.add("empId",Integer.parseInt(empId));
+	}
+	RestTemplate rest=new RestTemplate();
+	try {
+		employeeDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,EmployeeDetails .class);
+		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
+	
+		model.addObject("employeeDetails", employeeDetails);
+		model.addObject("branchSiteDetails", branchSiteDetails);
+	System.out.println("employeeDetailsssss "+employeeDetails.toString());
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return model;
+	}
 
 	
 	@RequestMapping(value = "/deleteEmployeeDetailsById", method = RequestMethod.GET)
@@ -286,23 +318,24 @@ public class EmployeeController {
 	String from=request.getParameter("from");
 	String to=request.getParameter("to");
 	
-	
+	System.out.println("gvvvvvvvvvvvvvv:"+empId+from+to);
 	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
 	
 	RestTemplate rest=new RestTemplate();
 	try {
 		if(empId!=null&&empId!="")
 		{
+			System.out.println("came");
 			map.add("empId",empId);
-			map.add("from",from);
-			map.add("to",to);
-			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
+			map.add("fromDate",from);
+			map.add("toDate",to);
+			employeeReportDetails=rest.postForObject(Constants.url+"getEmpAttendenceByEmpIdAndDate",map,List .class);
 		}
 		else if(branchId!=null&&branchId!="")
 		{
 			map.add("branchId",branchId);
-			map.add("from",from);
-			map.add("to",to);
+			map.add("fromDate",from);
+			map.add("toDate",to);
 			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
 		}
 
@@ -312,8 +345,8 @@ public class EmployeeController {
 		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
 		
 		model.addObject("branchSiteDetails", branchSiteDetails);
-		/*model.addObject("employeeReportDetails", employeeReportDetails);*/
-	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+		model.addObject("employeeReportDetails", employeeReportDetails);
+	System.out.println("employeeReportDetails "+employeeReportDetails.toString());
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}
@@ -364,6 +397,44 @@ public class EmployeeController {
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}
+		return model;
+	}
+	
+	
+	@RequestMapping(value = "/saveEmployeeManualAttendance", method = RequestMethod.POST)
+	public ModelAndView saveEmployeeManualAttendance(HttpServletRequest req, HttpServletResponse res)
+	{
+		
+		System.out.println("came");
+		
+		ModelAndView model=new ModelAndView("employee/employee-manual-attendance");
+		
+		AttendanceDetails attendanceDetails=new AttendanceDetails();
+		
+		attendanceDetails.setDeviceId(Integer.parseInt(req.getParameter("deviceId")));
+		attendanceDetails.setUserId(req.getParameter("userID"));
+		attendanceDetails.setDirection(req.getParameter("direction"));
+		attendanceDetails.setAttDirection("1");
+		attendanceDetails.setLogDate(req.getParameter("date"));
+		attendanceDetails.setDownloadDate(req.getParameter("date"));
+		attendanceDetails.setWorkCode("1");
+		attendanceDetails.setC1("1");
+		attendanceDetails.setC2("1");
+		attendanceDetails.setC3("1");
+		attendanceDetails.setC4("1");
+		attendanceDetails.setC5("1");
+		attendanceDetails.setC6("1");
+		attendanceDetails.setC7("1");	
+	
+		System.out.println("attendanceDetails:"+attendanceDetails.toString());
+		RestTemplate rest=new RestTemplate();
+		try {
+			attendanceDetails=rest.postForObject(Constants.url+"insertEmployeeManualAttendance", attendanceDetails,AttendanceDetails.class);
+		
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 		return model;
 	}
 }
