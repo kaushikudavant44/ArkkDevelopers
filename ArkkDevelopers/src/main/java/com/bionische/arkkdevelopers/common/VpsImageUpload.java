@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class VpsImageUpload {
-
 	
 	/*public static final String doctorProfile = "doctorProfile\\";
 	public static final String patientProfile = "patientProfile\\";

@@ -320,7 +320,6 @@ public class EmployeeController {
 		return model;
 	}
 	
-
 	@RequestMapping(value = "/getEmployeeSalary", method = RequestMethod.GET)
 	public ModelAndView getEmployeeSalary(HttpSession session, HttpServletRequest request) {
 		
