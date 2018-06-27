@@ -41,7 +41,7 @@
                 <div class="col-md-12 col-sm-12">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Registration Date :</label>
-                    <input type="text" class="form-control" id="date" name='date' placeholder="Contact No" required>
+                    <input type="text" class="form-control datepicker1" id="date" name='date' placeholder="Contact No" required>
                   </div>
                 </div>
                 
