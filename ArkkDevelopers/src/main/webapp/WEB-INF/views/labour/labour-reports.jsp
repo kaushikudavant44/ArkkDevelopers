@@ -83,7 +83,7 @@
       <div class="row">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
-          <div class="panel-heading blue">
+          <div class="panel-heading blue"> 
             <h3>Labour Attendance Reports</h3>
           </div>
           <div class="middle-bg">

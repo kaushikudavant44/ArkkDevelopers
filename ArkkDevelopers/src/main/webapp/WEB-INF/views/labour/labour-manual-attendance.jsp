@@ -22,7 +22,7 @@
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
 							
-							 <input type="submit" class="form-control" name="id" id="id" onclick="getLabourDetailsById()">
+						 	 <input type="submit" class="form-control" name="id" id="id" onclick="getLabourDetailsById()">
 						                      
 							</div>
 							</div>

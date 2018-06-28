@@ -55,7 +55,7 @@
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                        <div class="form-line">
+                        <div class="form-line"> 
                           <label for="exampleInputEmail1">End date :</label>
                           <input type="text" class="form-control datepicker2" name="to" id="to" placeholder="To Date">
                         </div>
