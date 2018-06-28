@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" rel="stylesheet" media="screen">
 
 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
@@ -37,6 +37,7 @@
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/adminlte.min.js"></script> 
@@ -55,10 +56,10 @@ $(function () {
     });
 });
 $(function () {
-    $('.datepicker3').datepicker({
-        
-        format: 'yyyy-mm-dd'
-    });
+	 $('.datepicker3').datepicker({
+	        
+	        format: 'yyyy-mm-dd'
+	    });
 });
 </script>
 
@@ -106,7 +107,7 @@ $(function () {
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-       <li><a href="${pageContext.request.contextPath}/showManualAttendance"><i class="fa fa-circle-o"></i>Manual Attendance</a></li>
+       <%-- <li><a href="${pageContext.request.contextPath}/showManualAttendance"><i class="fa fa-circle-o"></i>Manual Attendance</a></li> --%>
       <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Branch Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
           <li><a href="controller.html"><i class="fa fa-circle-o"></i>Manage Firm</a></li>
@@ -130,13 +131,18 @@ $(function () {
           <li><a href="configuration.html"><i class="fa fa-circle-o"></i>Multiple Site Labour</a></li>
         </ul>
       </li>
-      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Reports</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span></a>
+      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Employee Reports</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span></a>
         <ul class="treeview-menu">
           <li><a href="${pageContext.request.contextPath}/getEmployeeReport"><i class="fa fa-circle-o"></i>Attendance Report</a></li>
           <li><a href="${pageContext.request.contextPath}/getEmployeeSalary"><i class="fa fa-circle-o"></i>Salary Report</a></li>
         </ul>
       </li>
-      
+      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Labour Reports</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span></a>
+        <ul class="treeview-menu">
+          <li><a href="${pageContext.request.contextPath}/getLabourReport"><i class="fa fa-circle-o"></i>Attendance Report</a></li>
+          <li><a href="${pageContext.request.contextPath}/getLabourSalary"><i class="fa fa-circle-o"></i>Salary Report</a></li>
+        </ul>
+      </li>
       
     </ul>
   </section>
@@ -145,12 +151,5 @@ $(function () {
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
-<!-- <section class="content-header head-bg">
-  <h1> Data Tables <small>advanced tables</small> </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Tables</a></li>
-    <li class="active">Admin Dashboard</li>
-  </ol>
-</section> -->
+
 
