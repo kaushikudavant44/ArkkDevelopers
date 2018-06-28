@@ -1,5 +1,6 @@
 package com.bionische.arkkdevelopers.model;
 
+
 public class GetEmployeeSalaryDetails {
 	
 	private int empId;
@@ -7,8 +8,6 @@ public class GetEmployeeSalaryDetails {
 	private int noOfDays;
 	
 	private String name;
-	
-	private String branch;
 	
 	private int salary;
 
@@ -36,14 +35,6 @@ public class GetEmployeeSalaryDetails {
 		this.name = name;
 	}
 
-	public String getBranch() {
-		return branch;
-	}
-
-	public void setBranch(String branch) {
-		this.branch = branch;
-	}
-
 	public int getSalary() {
 		return salary;
 	}
@@ -54,11 +45,10 @@ public class GetEmployeeSalaryDetails {
 
 	@Override
 	public String toString() {
-		return "GetEmployeeSalaryDetails [empId=" + empId + ", noOfDays=" + noOfDays + ", name=" + name + ", branch="
-				+ branch + ", salary=" + salary + "]";
+		return "GetEmployeeSalaryDetails [empId=" + empId + ", noOfDays=" + noOfDays + ", name=" + name + ", salary="
+				+ salary + "]";
 	}
-	
-	
+
 	
 
 }
