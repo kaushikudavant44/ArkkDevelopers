@@ -1,5 +1,8 @@
-body { font-family: 'Roboto', sans-serif; font-size:14px; font-weight:normal  }
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
+body { font-family: 'Poppins', sans-serif; font-size:14px; font-weight:normal  }
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:300,400,500,700');
+
+/* font-family: 'Poppins', sans-serif; */
+/*font-family: 'Montserrat', sans-serif;  */
 
 
 .login-page,.register-page{background:#3c8dbc !important;}
@@ -29,9 +32,9 @@ li.mar-left { margin-left:20px;}
 .input-lg { padding:10px; width:100%; display:block;}
 
 .search-icon {
-    position: absolute;
-    top: 0;
-    right:3%;
+    position: absolute!important;
+    top:10px!important;
+    right:0%;
     z-index: 2;
     display: block;
     width: 34px;
@@ -159,11 +162,11 @@ ol.breadcrumb1 {
     color: white;
 }
 
-.middle-bg h3 { margin:0px 0 15px; text-transform:capitalize; color:#03a9f3; font-size:24px;}
+.middle-bg h3 { margin:0px 0 15px; text-transform:capitalize; font-family: 'Montserrat', sans-serif;  color:#03a9f3; font-size:24px;}
 .middle-bg p { font-size:15px; color:#414141;}
-.panel-heading h3 { font-size:20px; text-transform:uppercase; margin:0px; font-weight:600;}
-.panel-heading.blue { border-color: #03a9f3; color: white; background-color: #03a9f3; border-radius:0px; padding:20px 25px; } 
-.panel-heading.orange { border-color:#fb9678; color: white; background-color:#fb9678; border-radius:0px; padding:20px 25px; } 
+.panel-heading h3 { font-size:20px; text-transform:uppercase; margin:0px; font-weight:600; font-family: 'Montserrat', sans-serif; }
+.panel-heading.blue { border-color: #03a9f3; color: white; background-color: #03a9f3; border-radius:0px; padding:10px 25px; } 
+.panel-heading.orange { border-color:#fb9678; color: white; background-color:#fb9678; border-radius:0px; padding:10px 25px; } 
 .new-clear { background:linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%); font-size:16px; font-style:italic; border-color:#cccccc; border-radius:0px !important; color:#000; margin-left:10px;}
 .new-clear:hover { border-color:#cccccc; color:#000; }
 .new-bg { border-color: #f39c12; color: white; background:#f39c12; border-radius: 0px; padding:20px 25px; }
@@ -178,3 +181,82 @@ ol.breadcrumb1 {
 .datepicker td { padding: 8px !important; text-align: center; border: solid 1px #eee;}
 .datepicker td:hover {border-radius: 50px; background: #eee; color: #000;}
 .datepicker .active { background: #eee; border-radius: 50px}
+
+/* 28-11-2018 */
+label { font-weight:normal !important;}
+
+.mar-top0 { margin-top:0px !important;}
+ .btn-style { 
+ 	background-color: #1f91f3 !important; 
+ 	min-width: 120px; 
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    color:#fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+        border-radius: 2px;
+     border: none;
+     text-transform:capitalize;
+    margin-top:25px;
+    box-shadow:0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+    
+ } 
+ 
+ .upload-blk {
+  padding:6px 10px;
+  background:#fff;
+ 
+  position:relative;
+  color:#000;
+  border-radius:2px;
+  text-align:center;
+  cursor:pointer;
+   margin-top:31px;
+}
+.hide_file {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    font-size: 24px;
+    width: 100%;
+    
+}
+ .upload-blk label {
+  margin-bottom: 0px;
+    text-align: left;
+    display: block;
+   }
+ 
+ 
+ .form-group .form-control {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.form-group .form-line {
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-control:focus {
+    border-color:none !important;
+    outline: 0;
+    -webkit-box-shadow: none  !important;
+    box-shadow:none  !important;
+}
+/* 28-11-2018 */

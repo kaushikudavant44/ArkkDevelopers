@@ -3,30 +3,38 @@
 <c:url var="showEmployeeDetailsByBranch" value="/showEmployeeDetailsByBranch" />
 <c:url var="showEmployeeDetailsById" value="/showEmployeeDetailsById" />
 <c:url var="deleteEmployeeDetailsById" value="/deleteEmployeeDetailsById" />
-  <div class="1middle-bg">
+  <div class="middle-bg">
     <div class="row">
       <div class="col-md-5">
-        <input placeholder="Search employee ..." class="form-control input-lg" type="text" name="getEmpId" id="getEmpId">
-        <span class="glyphicon glyphicon-search search-icon"></span> </div>
-        
+      <div class="form-group">
+                        <div class="form-line">
+        <input placeholder="Search employee ..." class="form-control" type="text" name="getEmpId" id="getEmpId">
+        <span class="glyphicon glyphicon-search search-icon"></span> 
+        </div>
+        </div>
+        </div>
         <div class="col-md-2">
-        <input class="form-control" type="submit" onclick="getEmployeeById()">
+        <input class="btn-style mar-top0" type="submit" onclick="getEmployeeById()">
         </div>
         <div class="col-md-5">
-       
-           <select class="form-control input-lg" id="getBranch" name="getBranch" onchange="getEmployeeByBranch()">
+       <div class="form-group">
+                        <div class="form-line">
+           <select class="form-control" id="getBranch" name="getBranch" onchange="getEmployeeByBranch()">
            <option>--select--</option>
 							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
                              <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
                              </c:forEach>
                              </select>
-                             
+              </div>
+              </div>               
        </div>
     </div>
+    </div>
+    
     <div class="row">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
-          <div class="panel-heading new-bg">
+          <div class="panel-heading blue">
             <h3> Show All Employees</h3>
           </div>
           <div class="middle-bg">
@@ -66,18 +74,18 @@
                       
             </table>
             </div>
-            <div class="bottom-btn">
-              <input type="button" class="btn btn-primary" value="Add">
+            <div class="xbottom-btn">
+              <input type="button" class="btn-style mar-top0" value="Add">
               &nbsp;
-              <input type="button" class="btn btn-primary" value="Export">
+              <input type="button" class="btn-style mar-top0" value="Export">
               &nbsp;
-              <input type="button" class="btn btn-primary" value="Send To Owner">
+              <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+ 
 </section>
 
 <script>
