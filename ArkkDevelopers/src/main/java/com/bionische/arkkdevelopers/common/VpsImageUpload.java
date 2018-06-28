@@ -14,8 +14,8 @@ public class VpsImageUpload {
 	public static final String labImages = "labImages\\";
 	*/
 	//public static final String report="reports/";
-	public static final String document="/Users/Admin/git/ArkkDevelopers/ArkkDevelopers/src/main/webapp/resources/images";
-	public static final String employeeImages="/Users/Admin/git/ArkkDevelopers/ArkkDevelopers/src/main/webapp/resources/images";
+	public static final String document="C:/Users/Admin/git/ArkkDevelopers/ArkkDevelopers/src/main/webapp/resources/images";
+	public static final String employeeImages="C:/Users/Admin/git/ArkkDevelopers/ArkkDevelopers/src/main/webapp/resources/images";
 	
 	
 	
