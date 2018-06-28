@@ -8,7 +8,7 @@
           <!-- <div class="panel-heading blue">
             <h3>Report</h3>
           </div> -->
-          <form action="controller/Report1.jsp" >
+          <form action="${pageContext.request.contextPath}/getEmployeeReport" >
           <div class="middle-bg">
             
               <div class="row">
@@ -26,7 +26,7 @@
             <div class="col-md-2 col-sm-2">
                   <div class="form-group">
                    <label id="otherName">Enter Your Id
-                  <input  type="text" class="form-control" id="empId" placeholder="ID" name=""empId""/> 
+                  <input  type="text" class="form-control" id="empId" placeholder="ID" name="empId"/> 
                   </label>
                   
                     <label id="otherbranch">Choose Firm 
@@ -81,25 +81,22 @@
                 <th>Name</th>
                 <th>Branch</th>
                 <th>Date</th>
-                <th>Address</th>
-                
+                <th>In time</th>
+                <th>Out time</th> 
               </tr>
              <tbody>
+             <c:forEach items="${employeeReportDetails}" var = "employeeReportDetails" varStatus="myIndex">
                 <tr>
-                <td>1</td>
-                <td>${employeeDetails.name}</td>
-                <td>${employeeDetails.branch}</td>
-                <td>${employeeDetails.mobileNo}</td>
-                <td>${employeeDetails.email}</td>
-                <td>${employeeDetails.gender}</td>
-                <td>${employeeDetails.dob}</td>
-                <td>${employeeDetails.designation}</td>
-                <td>${employeeDetails.salary}</td>
-                <td>${employeeDetails.address}</td>
-                <td><span onclick="deleteEmpById(${employeeDetails.empId})" class="glyphicon glyphicon-trash"></span></td>
-                <td><span onclick="editEmpById(${employeeDetails.empId})" class="glyphicon glyphicon-edit"></span></td>
+                <td>${myIndex.index+1}</td>
+                <td>${employeeReportDetails.userId}</td>
+                <td>${employeeReportDetails.name}</td>
+                <td>${employeeReportDetails.branchSite}</td>
+                <td>${employeeReportDetails.date}</td>
+                <td>${employeeReportDetails.inTime}</td>
+                <td>${employeeReportDetails.outTime}</td>
+                
               </tr>
-             
+            </c:forEach> 
              </tbody>
                       
             </table>

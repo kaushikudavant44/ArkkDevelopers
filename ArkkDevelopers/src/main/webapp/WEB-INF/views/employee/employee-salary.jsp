@@ -8,7 +8,7 @@
           <!-- <div class="panel-heading blue">
             <h3>Report</h3>
           </div> -->
-          <form action="controller/Report1.jsp" >
+          <form action="${pageContext.request.contextPath}/getEmployeeSalary" >
           <div class="middle-bg">
             
               <div class="row">
@@ -26,7 +26,7 @@
             <div class="col-md-2 col-sm-2">
                   <div class="form-group">
                    <label id="otherName">Enter Your Id
-                  <input  type="text" class="form-control" id="empId" placeholder="ID" name=""empId""/> 
+                  <input  type="text" class="form-control" id="empId" placeholder="ID" name="empId"/> 
                   </label>
                   
                     <label id="otherbranch">Choose Firm 
@@ -43,18 +43,31 @@
                     <div class="row">
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Start date :</label>
-                          <input type="text" class="form-control datepicker1" name="from" id="from" placeholder="From Date">
-                        </div>
+                          <label for="exampleInputEmail1">Select Month :</label>
+ <select class="form-control input-lg" id="monthId" name="monthId">
+    <option value=''>--Select Month--</option>
+    <option value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+    </select>                         </div>
                       </div>
-                      <div class="col-md-3 col-sm-3">
+                     <!--  <div class="col-md-3 col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">End date :</label>
                           <input type="text" class="form-control datepicker2" name="to" id="to" placeholder="To Date">
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
               
                <input type="submit" value="get">
                
@@ -79,27 +92,21 @@
                 <th>Sr. No</th>
                 <th>Employee Id</th>
                 <th>Name</th>
-                <th>Branch</th>
-                <th>Date</th>
-                <th>Address</th>
+                <th>No of days</th>
+                <th>Salary</th>
                 
               </tr>
              <tbody>
+                <c:forEach items="${getEmployeeSalaryDetails}" var = "getEmployeeSalaryDetails" varStatus="myIndex">
                 <tr>
-                <td>1</td>
-                <td>${employeeDetails.name}</td>
-                <td>${employeeDetails.branch}</td>
-                <td>${employeeDetails.mobileNo}</td>
-                <td>${employeeDetails.email}</td>
-                <td>${employeeDetails.gender}</td>
-                <td>${employeeDetails.dob}</td>
-                <td>${employeeDetails.designation}</td>
-                <td>${employeeDetails.salary}</td>
-                <td>${employeeDetails.address}</td>
-                <td><span onclick="deleteEmpById(${employeeDetails.empId})" class="glyphicon glyphicon-trash"></span></td>
-                <td><span onclick="editEmpById(${employeeDetails.empId})" class="glyphicon glyphicon-edit"></span></td>
+                <td>${myIndex.index+1}</td>
+                <td>${getEmployeeSalaryDetails.empId}</td>
+                <td>${getEmployeeSalaryDetails.name}</td>
+                <td>${getEmployeeSalaryDetails.noOfDays}</td>
+                <td>${getEmployeeSalaryDetails.salary}</td>
+                
               </tr>
-             
+             </c:forEach>
              </tbody>
                       
             </table>

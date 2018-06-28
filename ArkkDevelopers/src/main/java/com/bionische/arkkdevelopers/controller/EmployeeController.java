@@ -1,7 +1,9 @@
 package com.bionische.arkkdevelopers.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,7 @@ import com.bionische.arkkdevelopers.model.AttendanceDetails;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.EmployeeDetails;
 import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
+import com.bionische.arkkdevelopers.model.GetEmployeeSalaryDetails;
 import com.bionische.arkkdevelopers.model.Info;
 
 @Controller
@@ -61,7 +64,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/saveEmployeeDetails", method = RequestMethod.POST)
-	public String saveEmployeeDetails(HttpServletRequest req, HttpServletResponse res)
+	public String saveEmployeeDetails(HttpServletRequest req, HttpServletResponse res,@RequestParam("photo") List<MultipartFile> photo,@RequestParam("document") List<MultipartFile> document)
 	{
 		
 		System.out.println("came");
@@ -70,14 +73,14 @@ public class EmployeeController {
 		
 		EmployeeDetails employeeDetails=new EmployeeDetails();
 		
-		String profilePhotoName="ambi";
-		String documentName="ambi";
+		String profilePhotoName=null;
+		String documentName=null;
 	
-		/*try {
+	try {
 				VpsImageUpload vpsImageUpload=new VpsImageUpload();
 				 profilePhotoName=photo.get(0).getOriginalFilename();
 				
-			vpsImageUpload.saveUploadedFiles(photo,2, profilePhotoName);
+			vpsImageUpload.saveUploadedFiles(photo,1, profilePhotoName);
 		}
 		catch (IOException e1) {
 			 
@@ -94,7 +97,7 @@ public class EmployeeController {
 		catch (IOException e1) {
 			 
 			e1.printStackTrace();
-		}*/
+		}
 	
 		
 		employeeDetails.setEmpId(Integer.parseInt(req.getParameter("empId")));
@@ -105,6 +108,7 @@ public class EmployeeController {
 		employeeDetails.setAddress(req.getParameter("address"));
 		employeeDetails.setDesignation(req.getParameter("designation"));
 		employeeDetails.setDob(req.getParameter("dob"));
+		employeeDetails.setSalary(Integer.parseInt(req.getParameter("salary")));
 		employeeDetails.setMobileNo((req.getParameter("mobileNo")));
 		employeeDetails.setEmail(req.getParameter("email"));
 		employeeDetails.setPhoto(profilePhotoName);
@@ -358,14 +362,13 @@ public class EmployeeController {
 		
 	ModelAndView model=new ModelAndView("employee/employee-salary");
 	
-	List<GetEmployeeReportDetails> employeeReportDetails=new ArrayList<GetEmployeeReportDetails>();
+	List<GetEmployeeSalaryDetails> getEmployeeSalaryDetails=new ArrayList<GetEmployeeSalaryDetails>();
 	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
+	
 	
 	String empId=request.getParameter("empId");
 	String branchId=request.getParameter("branchId");
-	String from=request.getParameter("from");
-	String to=request.getParameter("to");
-	
+	String monthId=request.getParameter("monthId");
 	
 	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
 	
@@ -374,16 +377,16 @@ public class EmployeeController {
 		if(empId!=null&&empId!="")
 		{
 			map.add("empId",empId);
-			map.add("from",from);
-			map.add("to",to);
-			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
+			map.add("month",monthId);
+			map.add("year",new SimpleDateFormat("yyyy").format(new Date()));
+			getEmployeeSalaryDetails=rest.postForObject(Constants.url+"getEmpSalaryDetails",map,List .class);
 		}
 		else if(branchId!=null&&branchId!="")
 		{
 			map.add("branchId",branchId);
-			map.add("from",from);
-			map.add("to",to);
-			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
+			map.add("month",monthId);
+			map.add("year",new SimpleDateFormat("yyyy").format(new Date()));
+			getEmployeeSalaryDetails=rest.postForObject(Constants.url+"getEmpSalaryDetails",map,List .class);
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
@@ -392,8 +395,8 @@ public class EmployeeController {
 		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
 		
 		model.addObject("branchSiteDetails", branchSiteDetails);
-		/*model.addObject("employeeReportDetails", employeeReportDetails);*/
-	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+		model.addObject("getEmployeeSalaryDetails", getEmployeeSalaryDetails);
+	System.out.println("getEmployeeSalaryDetails "+getEmployeeSalaryDetails.toString());
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}

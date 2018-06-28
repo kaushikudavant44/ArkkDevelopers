@@ -14,8 +14,8 @@ public class VpsImageUpload {
 	public static final String labImages = "labImages\\";
 	*/
 	//public static final String report="reports/";
-	public static final String document="/usr/local/tomcat7/webapps/bionWebApi/reports/";
-	public static final String employeeImages="/usr/local/tomcat7/webapps/bioWebApi/images/patient/";
+	public static final String document="/Users/Admin/git/ArkkDevelopers/ArkkDevelopers/src/main/webapp/resources/images";
+	public static final String employeeImages="/Users/Admin/git/ArkkDevelopers/ArkkDevelopers/src/main/webapp/resources/images";
 	
 	
 	
@@ -24,6 +24,8 @@ public class VpsImageUpload {
 	
 	public void saveUploadedFiles(List<MultipartFile> files,int imageType, String imageName) throws IOException {
 
+		System.out.println("phortoname:"+imageName);
+		
 		for (MultipartFile file : files) {
 
 			if (file.isEmpty()) {
@@ -38,6 +40,12 @@ public class VpsImageUpload {
 			path = Paths.get(employeeImages + imageName);
 			
 			}
+			
+			if(imageType==2) {
+				  
+				path = Paths.get(document + imageName);
+				
+				}
 			
 				
 			Files.write(path, bytes);
