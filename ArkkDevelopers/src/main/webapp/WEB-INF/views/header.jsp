@@ -108,10 +108,10 @@ $(function () {
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
        <%-- <li><a href="${pageContext.request.contextPath}/showManualAttendance"><i class="fa fa-circle-o"></i>Manual Attendance</a></li> --%>
-      <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Branch Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+      <li class="treeview"> <a href=""> <i class="fa fa-fw fa-user"></i> <span>Branch Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
-          <li><a href="controller.html"><i class="fa fa-circle-o"></i>Manage Firm</a></li>
-          <li><a href="controller.html"><i class="fa fa-circle-o"></i>Manage Site</a></li> 
+          <li><a href="${pageContext.request.contextPath}/showBranchMaster"><i class="fa fa-circle-o"></i>Manage Branch</a></li>
+          
         </ul>
       </li>
      
