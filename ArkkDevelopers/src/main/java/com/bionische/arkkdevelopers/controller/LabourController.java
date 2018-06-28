@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
+import com.bionische.arkkdevelopers.model.GetLabourSalaryDetails;
 import com.bionische.arkkdevelopers.model.Info;
 import com.bionische.arkkdevelopers.model.LabourDetails;
 
@@ -364,8 +365,8 @@ public class LabourController {
 		
 	ModelAndView model=new ModelAndView("labour/labour-salary");
 	
-	List<GetEmployeeReportDetails> getLabourReportDetailsList=new ArrayList<GetEmployeeReportDetails>();
-	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
+	GetLabourSalaryDetails getLabourSalaryDetails=new GetLabourSalaryDetails();
+	 List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
 	
 	String labourId=request.getParameter("labourId");
 	String siteId=request.getParameter("siteId");
@@ -380,23 +381,25 @@ public class LabourController {
 		if(labourId!=null&&labourId!="")
 		{
 			map.add("labourId",labourId);
-			map.add("from",from);
-			map.add("to",to);
-			getLabourReportDetailsList=rest.postForObject(Constants.url+"getLabourDetailsByEmpId",map,List .class);
+			map.add("fromDate",from);
+			map.add("toDate",to);
+			getLabourSalaryDetails=rest.postForObject(Constants.url+"getLabourSalaryDetails",map,GetLabourSalaryDetails .class);
+			System.out.println("vfbhvfjdb"+getLabourSalaryDetails);
 		}
 		else if(siteId!=null&&siteId!="")
 		{
 			map.add("siteId",siteId);
 			map.add("from",from);
 			map.add("to",to);
-			getLabourReportDetailsList=rest.postForObject(Constants.url+"getLabourDetailsByEmpId",map,List .class);
+			getLabourSalaryDetails=rest.postForObject(Constants.url+"getLabourSalaryDetails",map,GetLabourSalaryDetails .class);
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
 		mapBranch.add("type",2);
 		
 		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
-		
+	//	System.out.println(getLabourSalaryDetails.getName());
+		model.addObject("getLabourSalaryDetails",getLabourSalaryDetails);
 		model.addObject("branchSiteDetails", branchSiteDetails);
 		/*model.addObject("employeeReportDetails", employeeReportDetails);*/
 	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
