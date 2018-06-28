@@ -62,7 +62,7 @@
 	 <section class="content index">
     
 			<div class="1middle-bg" id="myModel"> 
-			<div class="row">
+			<div class="row"> 
 				<div class="col-md-12 col-sm-12">
 				<div class="add-blk">
 				<div class="panel-heading blue"><h3>Manaul Attendance</h3></div>
