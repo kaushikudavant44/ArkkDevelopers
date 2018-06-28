@@ -5,10 +5,10 @@
 <c:url var="deleteEmployeeDetailsById" value="/deleteEmployeeDetailsById" />
   <div class="middle-bg">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-4">
       <div class="form-group">
                         <div class="form-line">
-        <input placeholder="Search employee ..." class="form-control" type="text" name="getEmpId" id="getEmpId">
+        <input placeholder="Enter Employee Id ..." class="form-control" type="text" name="getEmpId" id="getEmpId">
         <span class="glyphicon glyphicon-search search-icon"></span> 
         </div>
         </div>
@@ -16,11 +16,12 @@
         <div class="col-md-2">
         <input class="btn-style mar-top0" type="submit" onclick="getEmployeeById()">
         </div>
+        <div class="col-md-1 text-center"><span class="">OR<span></span></span></div>
         <div class="col-md-5">
        <div class="form-group">
                         <div class="form-line">
            <select class="form-control" id="getBranch" name="getBranch" onchange="getEmployeeByBranch()">
-           <option>--select--</option>
+           <option>--select branch--</option>
 							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
                              <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
                              </c:forEach>
@@ -33,7 +34,7 @@
     
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <div class="add-blk">
+        <div class="add-blk" id="employeeTable">
           <div class="panel-heading blue">
             <h3> Show All Employees</h3>
           </div>
@@ -43,6 +44,7 @@
               <tr>
                 <th>Sr. No</th>
                 <th>Name</th>
+                <th>Id</th>
                 <th>Branch</th>
                 <th>Mobile No</th>
                 <th>Email</th>
@@ -58,6 +60,7 @@
                 <tr>
                 <td>1</td>
                 <td>${employeeDetails.name}</td>
+                 <td>${employeeDetails.empId}</td>
                 <td>${employeeDetails.branch}</td>
                 <td>${employeeDetails.mobileNo}</td>
                 <td>${employeeDetails.email}</td>
@@ -75,9 +78,8 @@
             </table>
             </div>
             <div class="xbottom-btn">
-              <input type="button" class="btn-style mar-top0" value="Add">
-              &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Export">
+           
+              <input type="button" id="employee" class="btn-style mar-top0" value="Export">
               &nbsp;
               <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
@@ -116,6 +118,7 @@
 																	tr.append($('<td></td>').html(key+1));
 																	
 																	tr.append($('<td></td>').html(data.name));
+																	tr.append($('<td></td>').html(data.empId));
 																	tr.append($('<td></td>').html(data.branch));
 																	tr.append($('<td></td>').html(data.mobileNo));
 																	tr.append($('<td></td>').html(data.email));
@@ -143,7 +146,7 @@
 											 
 		 var empId=document.getElementById("getEmpId").value; 
 		 $('#example2 td').remove();
-		
+		 $('#getBranch option:eq(0)').prop('selected', 'selected');
 		  
 		 $
 														.getJSON(
@@ -161,6 +164,7 @@
 																	tr.append($('<td></td>').html(1));
 																	
 																	tr.append($('<td></td>').html(data.name));
+																	tr.append($('<td></td>').html(data.empId));
 																	tr.append($('<td></td>').html(data.branch));
 																	tr.append($('<td></td>').html(data.mobileNo));
 																	tr.append($('<td></td>').html(data.email));
@@ -256,53 +260,70 @@
                 <input type="hidden" class="form-control" name="deviceId" id="editDeviceId">
                 <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Employee Name :</label>
                     <input type="text" class="form-control" name="name" id="editName" placeholder="Name">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Gender :</label>
                     <input type="text" class="form-control" name="gender" id="editGender" placeholder="Gender">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">DOB :</label>
                     <input type="text" class="form-control" name="dob" id="editDOB" placeholder="dob">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Mobile No :</label>
                     <input type="text" class="form-control" name="mobileNo" id="editNo" placeholder="Mobile No">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Email :</label>
                     <input type="text" class="form-control" name="email" id="editEmail" placeholder="Email">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Designation :</label>
                     <input type="text" class="form-control" name="designation" id="editDesignation" placeholder="Designation">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Salary :</label>
                     <input type="text" class="form-control" name="salary" id="editSalary" placeholder="Salary">
                   </div>
                   </div>
+                  </div>
                   <div class="col-md-6 col-sm-6">
                   <div class="form-group">
+                   <div class="form-line">
                     <label for="exampleInputEmail1">Address :</label>
-                    <textarea class="form-control" placeholder="Address " id="editAddress" name="address" rows="3" col="3"></textarea>
+                    <textarea class="form-control" placeholder="Address " id="editAddress" name="address" rows="1" col="3"></textarea>
                   </div>
                   </div>
-                  <input type="submit" value="save">
+                  </div>
+                   <div class="col-md-12 col-sm-12"><input type="submit" class="btn-style" value="save"></div>
+                  
                 </form>
                 </div>
                 
@@ -314,4 +335,15 @@
 
 
 <%@ include file="../footer.jsp" %>
-<!--Employee Details Edit  Modal -->
+
+<script type="text/javascript">
+	$(function(){
+	
+    $('#employee').click(function(){
+   
+    	var url='data:application/vnd.ms-excel,' + encodeURIComponent($('#employeeTable').html()) 
+        location.href=url
+        return false
+    })
+})
+</script>

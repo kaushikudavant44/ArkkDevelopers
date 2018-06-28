@@ -48,19 +48,25 @@
                       <div class="col-md-3 col-sm-3">
                          <div class="form-group">
         					<div class="form-line">
-                          <label for="exampleInputEmail1">Start date :</label>
-                          <input type="text" class="form-control datepicker1" name="from" id="from" placeholder="From Date">
-                        </div>
+                          <label for="exampleInputEmail1">Select Month :</label>
+<select class="form-control" id="monthId" name="monthId">
+    <option value=''>--Select Month--</option>
+    <option value='1'>Janaury</option>
+    <option value='2'>February</option>
+    <option value='3'>March</option>
+    <option value='4'>April</option>
+    <option value='5'>May</option>
+    <option value='6'>June</option>
+    <option value='7'>July</option>
+    <option value='8'>August</option>
+    <option value='9'>September</option>
+    <option value='10'>October</option>
+    <option value='11'>November</option>
+    <option value='12'>December</option>
+    </select>                                </div>
                         </div>
                       </div>
-                      <div class="col-md-3 col-sm-3">
-                         <div class="form-group">
-        <div class="form-line">
-                          <label for="exampleInputEmail1">End date :</label>
-                          <input type="text" class="form-control datepicker2" name="to" id="to" placeholder="To Date">
-                        </div>
-                        </div>
-                      </div>
+                      
                       
                        <div class="col-md-2 col-sm-2">
                         <div class="form-group">
@@ -87,7 +93,7 @@
           <div class="panel-heading blue">
             <h3> Show All Employees</h3>
           </div>
-          <div class="middle-bg">
+          <div class="middle-bg" id="salaryTable">
           <div class="table-responsive">
             <table id="example2" class="table table-bordered table-hover tbl">
               <tr>
@@ -126,9 +132,7 @@
             </table>
             </div>
             <div class="xbottom-btn">
-              <input type="button" class="btn-style mar-top0" value="Add">
-              &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Export">
+              <input type="button" id="export" class="btn-style mar-top0" value="Export">
               &nbsp;
               <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
@@ -164,3 +168,14 @@
     });
 });
 </script> 
+<script type="text/javascript">
+	$(function(){
+	
+    $('#export').click(function(){
+   
+    	var url='data:application/vnd.ms-excel,' + encodeURIComponent($('#salaryTable').html()) 
+        location.href=url
+        return false
+    })
+})
+</script>

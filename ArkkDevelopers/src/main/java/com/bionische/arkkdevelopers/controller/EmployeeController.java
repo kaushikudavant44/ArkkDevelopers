@@ -69,7 +69,7 @@ public class EmployeeController {
 		
 		System.out.println("came");
 		String url=null;
-		ModelAndView model =new ModelAndView("employee-details");
+		ModelAndView model =new ModelAndView("employee/employee-details");
 		
 		EmployeeDetails employeeDetails=new EmployeeDetails();
 		

@@ -8,7 +8,7 @@
             <h3>Add Employee</h3>
           </div>
           <div class="middle-bg">
-            <form name="myForm" action="${pageContext.request.contextPath}/saveEmployeeDetails" method="post">
+            <form name="myForm" action="${pageContext.request.contextPath}/saveEmployeeDetails" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
                 </div>

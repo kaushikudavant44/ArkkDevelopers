@@ -80,7 +80,7 @@
           <div class="panel-heading blue">
             <h3> Show All Employees</h3>
           </div>
-          <div class="middle-bg">
+          <div class="middle-bg" id="reportTable">
           <div class="table-responsive">
             <table id="example2" class="table table-bordered table-hover tbl">
               <tr>
@@ -119,9 +119,7 @@
             </table>
             </div>
             <div class="xbottom-btn">
-              <input type="button" class="btn-style mar-top0" value="Add">
-              &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Export">
+              <input type="button" id="btn" class="btn-style mar-top0" value="Export">
               &nbsp;
               <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
@@ -157,3 +155,14 @@
     });
 });
 </script> 
+<script type="text/javascript">
+	$(function(){
+	
+    $('#btn').click(function(){
+   
+    	var url='data:application/vnd.ms-excel,' + encodeURIComponent($('#reportTable').html()) 
+        location.href=url
+        return false
+    })
+})
+</script>

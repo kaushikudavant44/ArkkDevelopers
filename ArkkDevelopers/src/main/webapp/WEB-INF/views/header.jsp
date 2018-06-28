@@ -120,7 +120,7 @@ $(function () {
         
           <li><a href="${pageContext.request.contextPath}/showEmployeeRegistration"><i class="fa fa-circle-o"></i>Add Employee</a></li>
           <li><a href="${pageContext.request.contextPath}/showAllEmployee"><i class="fa fa-circle-o"></i>Show Employee's</a></li>
-          <li><a href="configuration.html"><i class="fa fa-circle-o"></i>Multiple Branches Employee's</a></li>
+          <li><a href="${pageContext.request.contextPath}/manualAttendanceById"><i class="fa fa-circle-o"></i>Manual Attendance</a></li>
         </ul>
       </li>
       <li class="treeview"> <a href="#"> <i class="fa fa-fw fa-user"></i> <span>Labour Management</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
