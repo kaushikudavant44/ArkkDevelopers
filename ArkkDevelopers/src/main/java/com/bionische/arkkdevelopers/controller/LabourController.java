@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bionische.arkkdevelopers.common.Constants;
+import com.bionische.arkkdevelopers.model.AttendanceDetails;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
 import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
 import com.bionische.arkkdevelopers.model.GetLabourSalaryDetails;
@@ -409,6 +410,41 @@ public class LabourController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/saveLabourManualAttendance", method = RequestMethod.POST)
+	public ModelAndView saveEmployeeManualAttendance(HttpServletRequest req, HttpServletResponse res)
+	{
+		
+		System.out.println("came");
+		
+		ModelAndView model=new ModelAndView("labour/labour-manual-attendance");
+		
+		AttendanceDetails attendanceDetails=new AttendanceDetails();
+		
+		attendanceDetails.setDeviceId(Integer.parseInt(req.getParameter("deviceId")));
+		attendanceDetails.setUserId(req.getParameter("userID"));
+		attendanceDetails.setDirection(req.getParameter("direction"));
+		attendanceDetails.setAttDirection("1");
+		attendanceDetails.setLogDate(req.getParameter("date"));
+		attendanceDetails.setDownloadDate(req.getParameter("date"));
+		attendanceDetails.setWorkCode("1");
+		attendanceDetails.setC1("1");
+		attendanceDetails.setC2("1");
+		attendanceDetails.setC3("1");
+		attendanceDetails.setC4("1");
+		attendanceDetails.setC5("1");
+		attendanceDetails.setC6("1");
+		attendanceDetails.setC7("1");	
 	
+		System.out.println("attendanceDetails:"+attendanceDetails.toString());
+		RestTemplate rest=new RestTemplate();
+		try {
+			attendanceDetails=rest.postForObject(Constants.url+"insertEmployeeManualAttendance", attendanceDetails,AttendanceDetails.class);
+		
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return model;
+	}
 	
 }

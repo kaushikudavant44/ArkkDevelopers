@@ -12,6 +12,7 @@
   						<div class="row">
                                 <div class="col-md-4 col-sm-4">
 								<div class="form-group">
+								<div class="form-line">
 							<label for="exampleInputEmail1">Labour Id :</label>
 							
 							 <input type="text" class="form-control" name="labourId" id="labourId" >
@@ -19,10 +20,11 @@
 							                             
 							</div>
 							</div>
+							</div>
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
 							
-						 	 <input type="submit" class="form-control" name="id" id="id" onclick="getLabourDetailsById()">
+						 	 <input type="submit" class="btn-style" name="id" id="id" onclick="getLabourDetailsById()">
 						                      
 							</div>
 							</div>
@@ -51,7 +53,7 @@
 				ajax : 'true'
 
 					},function(data) {
-						alert(data.labourId);
+						
 						document.getElementById("editLabourId").value=data.labourId;
 						document.getElementById("editName").value=data.name;
 					
@@ -67,40 +69,47 @@
 				<div class="add-blk">
 				<div class="panel-heading blue"><h3>Manaul Attendance</h3></div>
 				<div class="middle-bg">
-					<form action="${pageContext.request.contextPath}/saveEmployeeManualAttendance" method="post">
+					<form action="${pageContext.request.contextPath}/saveLabourManualAttendance" method="post">
   						<div class="row">
          
          
          					<div class="col-md-4 col-sm-4">
 								<div class="form-group">
+								<div class="form-line">
 							<label for="exampleInputEmail1">Labour Id :</label>
 							<input type="text" class="form-control" id="editLabourId" name="userID" placeholder="Labour Id">
+							</div>
 							</div>
 							</div>
 																				
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
+								<div class="form-line">
 							<label for="exampleInputEmail1">Labour Name :</label>
 							<input type="text" class="form-control" id="editName" name="name" placeholder="Name">
+							</div>
 							</div>
 							</div>
 														
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
+								<div class="form-line">
 							<label for="exampleInputEmail1">Site :</label>
 							<select class="form-control" id="editSite" name="deviceId" onchange="getLabourBySite()">
                     <option>--select---</option>
                       <c:forEach items="${branchSiteDetailsList}" var = "branchSiteDetailsList">
-                             <option  value ="${branchSiteDetailsList.type}">${branchSiteDetailsList.name}</option>
+                             <option  value ="${branchSiteDetailsList.deviceId}">${branchSiteDetailsList.name}</option>
                              </c:forEach>
                       
                     </select>
+							</div>
 							</div>
 							</div>
 							
 							
 							<div class="col-md-4 col-sm-4">
 								<div class="form-group">
+								<div class="form-line">
 							<label for="exampleInputEmail1">direction :</label>
 							<select class="form-control" id="direction" name="direction">
                               <option value="in">in</option>
@@ -108,13 +117,16 @@
                             </select>
 							</div>
 							</div>
+							</div>
                             
                             
 							
                             <div class="col-md-4 col-sm-4">
 								<div class="form-group">
+								<div class="form-line">
 							<label for="exampleInputEmail1">Date And Time</label>
 							<input type="text" class="form-control datepicker3" id="time" name="date" placeholder="Date">
+							</div>
 							</div>
 							</div>
 							
@@ -122,7 +134,7 @@
 							
 							<div class="col-md-12 col-sm-12">
                             <div class="form-group">
-								<input type="submit" value="Save" class="btn btn-primary new-btn">
+								<input type="submit" value="Save" class="btn-style mar-top0">
 	                        </div>
 							</div> 
 							

@@ -50,7 +50,7 @@
             <h3> Show All Employees</h3>
           </div>
           <div class="middle-bg">
-          <div class="table-responsive" >
+          <div class="table-responsive" id="labourTable">
             <table id="labourDetailTableId" class="table table-bordered table-hover tbl">
                <thead>
                <tr>
@@ -88,9 +88,8 @@
             </table>
             </div>
             <div class="xbottom-btn">
-              <input type="button" class="btn-style mar-top0" value="Add">
-              &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Export">
+             
+              <input type="button" id="labour" class="btn-style mar-top0" value="Export">
               &nbsp;
               <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
@@ -137,7 +136,8 @@ function getLabourBySite() {
 	 
 	
 	var siteId=document.getElementById("site").value; 
-	
+	 $('#labourDetailTableId td').remove();
+	$('#site option:eq(0)').prop('selected', 'selected');	
 		  
 	 $.getJSON('${showLabourDetailsBySite}',
 															{
@@ -275,3 +275,14 @@ function editLabourById(labourId) {
   </div>
  </form>
 <%@ include file="../footer.jsp" %>
+<script type="text/javascript">
+	$(function(){
+	
+    $('#labour').click(function(){
+   
+    	var url='data:application/vnd.ms-excel,' + encodeURIComponent($('#labourTable').html()) 
+        location.href=url
+        return false
+    })
+})
+</script>
