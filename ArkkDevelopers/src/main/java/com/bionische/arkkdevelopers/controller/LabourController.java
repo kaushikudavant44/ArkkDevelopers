@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.model.AttendanceDetails;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
+import com.bionische.arkkdevelopers.model.GetBranchEmployeeReportDetails;
 import com.bionische.arkkdevelopers.model.GetEmployeeReportDetails;
 import com.bionische.arkkdevelopers.model.GetLabourSalaryDetails;
 import com.bionische.arkkdevelopers.model.Info;
@@ -128,14 +129,16 @@ public class LabourController {
 		int labourId=Integer.parseInt(req.getParameter("labourId"));
 		String labourName=req.getParameter("labourName");
 		String gender=req.getParameter("gender");
-		String site=req.getParameter("site");
+		String site="2";
+		
 		int deviceId=Integer.parseInt(req.getParameter("deviceId"));
 		String mobileNumber=req.getParameter("mobileNumber");
 		String address=req.getParameter("address");
 		int salary=Integer.parseInt(req.getParameter("salary"));
 		
 		 String labourDetailsId=req.getParameter("editLabourDetailsId");
-		    if(labourDetailsId!=null||labourDetailsId!="")
+		 System.out.println("dnvj"+labourDetailsId);
+		    if(labourDetailsId != null)
 		    {
 		    	labourDetails.setLabourDetailsId(Integer.parseInt(labourDetailsId));
 		    	ret="redirect:/getUpdatedLabourDetailsById/"+labourId;
@@ -149,7 +152,7 @@ public class LabourController {
 		labourDetails.setDeviceId(deviceId);
 		labourDetails.setAddress(address);
 		labourDetails.setMobileNo(mobileNumber);
-		System.out.println("  lla"+labourDetails.toString());
+		System.out.println("lla"+labourDetails.toString());
 		labourDetails=rest.postForObject(Constants.url+"/insertLabourDetails", labourDetails, LabourDetails.class);
 		model.addObject(labourDetails);
 		return ret;
@@ -367,6 +370,7 @@ public class LabourController {
 	ModelAndView model=new ModelAndView("labour/labour-salary");
 	
 	GetLabourSalaryDetails getLabourSalaryDetails=new GetLabourSalaryDetails();
+	List<GetBranchEmployeeReportDetails> getBranchEmployeeReportDetails=new ArrayList<GetBranchEmployeeReportDetails>();
 	 List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
 	
 	String labourId=request.getParameter("labourId");
@@ -390,9 +394,10 @@ public class LabourController {
 		else if(siteId!=null&&siteId!="")
 		{
 			map.add("siteId",siteId);
-			map.add("from",from);
-			map.add("to",to);
-			getLabourSalaryDetails=rest.postForObject(Constants.url+"getLabourSalaryDetails",map,GetLabourSalaryDetails .class);
+			map.add("fromDate",from);
+			map.add("toDate",to);
+			getBranchEmployeeReportDetails=rest.postForObject(Constants.url+"getLabourSalaryDetailsBySite",map,List.class);
+			System.out.println("dfvsuvyhbkkk"+getBranchEmployeeReportDetails.toString());
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
@@ -401,6 +406,8 @@ public class LabourController {
 		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
 	//	System.out.println(getLabourSalaryDetails.getName());
 		model.addObject("getLabourSalaryDetails",getLabourSalaryDetails);
+	//	model.addObject("getLabourSalaryDetails",getBranchEmployeeReportDetails);
+		
 		model.addObject("branchSiteDetails", branchSiteDetails);
 		/*model.addObject("employeeReportDetails", employeeReportDetails);*/
 	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
@@ -411,7 +418,7 @@ public class LabourController {
 	}
 	
 	@RequestMapping(value = "/saveLabourManualAttendance", method = RequestMethod.POST)
-	public ModelAndView saveEmployeeManualAttendance(HttpServletRequest req, HttpServletResponse res)
+	public String saveEmployeeManualAttendance(HttpServletRequest req, HttpServletResponse res)
 	{
 		
 		System.out.println("came");
@@ -444,7 +451,7 @@ public class LabourController {
 			System.out.println(e.getMessage());
 		}
 		
-		return model;
+		return "redirect:/showManualAttendance";
 	}
 	
 }
