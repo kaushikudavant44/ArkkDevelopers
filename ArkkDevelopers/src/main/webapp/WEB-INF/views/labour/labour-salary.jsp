@@ -78,7 +78,7 @@
         </div>
       </div>
       
-      <div class="row">
+      <div class="row" id="individualSalaryDiv">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <div class="panel-heading blue">
@@ -90,7 +90,7 @@
               <tr>
                 <th>Sr. No</th>
               
-                <th>Name</th>
+              
                 <th>Date</th>
                 <th>In Time</th>
                 <th>Out Time</th>
@@ -104,7 +104,7 @@
               
                
 				<td>${myIndex.index+1}</td>
-                <td>${getLabourSalaryDetails.name}</td>
+              
                 <td>${getLabourSalaryDetails.date}</td>	
                 <td>${getLabourSalaryDetails.inTime}</td>
              	<td>${getLabourSalaryDetails.outTime}</td>
@@ -116,10 +116,14 @@
              </c:forEach>  
              
              <tr>
-             <td colspan='6' align="right">Total
+             <td colspan='2' align="left">Name :- ${getLabourSalaryDetails.name}
              </td>
+             <td colspan='3' align="right">Total
+             </td>
+             
               
               <td>
+              
               ${getLabourSalaryDetails.salary }
              </td>
              </tr>
@@ -148,11 +152,11 @@
     
     
     <!--This table use to display the sitewise salary  -->
-    <div class="row">
+    <div class="row" id="branchSalaryDiv">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <div class="panel-heading blue">
-            <h3> Labour Salary Report</h3>
+            <h3>Site Wise Labour Salary Report</h3>
           </div>
           <div class="middle-bg">
           <div class="table-responsive exportToExcel">
@@ -164,33 +168,22 @@
                 <th>Date</th>
                 <th>In Time</th>
                 <th>Out Time</th>
-                  <th>Salary/Day</th>
+                <th>Salary/Day</th>
                 
               </tr>
              <tbody>
               <c:forEach items="${getBranchEmployeeReportDetails}" var = "getBranchEmployeeReportDetails" varStatus="myIndex">
-                <tr>
-              
-               
-				<td>${myIndex.index+1}</td>
+               <tr>
+              	<td>${myIndex.index+1}</td>
                 <td>${getBranchEmployeeReportDetails.name}</td>
                 <td>${getBranchEmployeeReportDetails.date}</td>	
                 <td>${getBranchEmployeeReportDetails.inTime}</td>
              	<td>${getBranchEmployeeReportDetails.outTime}</td>
  				<td>${getBranchEmployeeReportDetails.salary}</td>
-                              
-               
               </tr>
              </c:forEach>  
              
-             <tr>
-             <td colspan='5' align="right">Total
-             </td>
-              
-              <td>
-              ${getBranchEmployeeReportDetails.salary }
-             </td>
-             </tr>
+             
              </tbody>
                
              
@@ -239,22 +232,27 @@
     $("#country").on("change", function() {
         if ($(this).val() === "I") {
             $("#otherName").show();
+            $("#individualSalaryDiv").show();
         }
         else {
             $("#otherName").hide();
+            $("#individualSalaryDiv").hide();
         }
     });
 });
 </script>
 
 <script>
+
 	$(document).ready(function() {
     $("#country").on("change", function() {
         if ($(this).val() === "B") {
             $("#otherbranch").show();
+            $("#branchSalaryDiv").show();
         }
         else {
             $("#otherbranch").hide();
+            $("#branchSalaryDiv").hide();
         }
     });
 });

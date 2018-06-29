@@ -341,6 +341,7 @@ public class LabourController {
 			
 			getLabourReportDetailsList=rest.postForObject(Constants.url+"getEmpAttendenceByLabourIdAndDate",map,List .class);
 			
+			
 		}
 		else if(siteId!=null&&siteId!="")
 		{
@@ -390,6 +391,7 @@ public class LabourController {
 			map.add("toDate",to);
 			getLabourSalaryDetails=rest.postForObject(Constants.url+"getLabourSalaryDetails",map,GetLabourSalaryDetails .class);
 			System.out.println("vfbhvfjdb"+getLabourSalaryDetails);
+			model.addObject("getLabourSalaryDetails",getLabourSalaryDetails);
 		}
 		else if(siteId!=null&&siteId!="")
 		{
@@ -398,19 +400,20 @@ public class LabourController {
 			map.add("toDate",to);
 			getBranchEmployeeReportDetails=rest.postForObject(Constants.url+"getLabourSalaryDetailsBySite",map,List.class);
 			System.out.println("dfvsuvyhbkkk"+getBranchEmployeeReportDetails.toString());
+			model.addObject("getBranchEmployeeReportDetails",getBranchEmployeeReportDetails);
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
 		mapBranch.add("type",2);
 		
 		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",mapBranch,List .class);
-	//	System.out.println(getLabourSalaryDetails.getName());
-		model.addObject("getLabourSalaryDetails",getLabourSalaryDetails);
-	//	model.addObject("getLabourSalaryDetails",getBranchEmployeeReportDetails);
+	
+		
+	
 		
 		model.addObject("branchSiteDetails", branchSiteDetails);
-		/*model.addObject("employeeReportDetails", employeeReportDetails);*/
-	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+	
+	
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}
