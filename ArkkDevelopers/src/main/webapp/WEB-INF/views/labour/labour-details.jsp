@@ -53,24 +53,33 @@
                  <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Site :</label>
-                     <select class="form-control" id="site" name="site">
+                     <select class="form-control" id="site" name="site" onchange="getDeviceIdBySite()">
                      <option>---select---</option>
                       <c:forEach items="${branchSiteDetailsList}" var = "branchSiteDetailsList">
-                             <option  value ="${branchSiteDetailsList.type}">${branchSiteDetailsList.name}</option>
+                             <option value ="${branchSiteDetailsList.deviceId}">${branchSiteDetailsList.name}</option>
                              </c:forEach>
                       
                     </select>
                   </div>
                   </div>
+                
                 </div>
                  <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Device Id :</label>
-                    <input type="text" class="form-control" id="deviceId" name="deviceId" placeholder="Device Id">
+                     <input type="text" class="form-control"  id="deviceId" name="deviceId" placeholder="Device Id" readonly>
                   </div>
                   </div>
                 </div>
+                  <script>
+                  function getDeviceIdBySite(){
+                	  var site=document.getElementById("site").value;
+                	  
+                	  document.getElementById("deviceId").value=site;
+                	  	  
+                  } 
+                  </script>
                 <div class="col-md-4 col-sm-4">
                   <div class="form-group">
                   <div class="form-line">
@@ -102,4 +111,31 @@
     </div>
   </div>
 </section>
+
+
+<!-- <script type="text/javascript">
+function getDeviceIdByBranch(){
+	
+	
+	var siteId=document.getElementById("site").value;
+	$.getJSON(
+			'${getDeviceIdByBranch}',
+			{
+				siteId : siteId,
+				
+				ajax : 'true'
+			},
+			function(data) {
+				document.getElementById("deviceId").value=data.deviceId;
+				
+
+
+			})
+	
+}
+
+
+</script> -->
+
+
 <%@ include file="../footer.jsp" %>

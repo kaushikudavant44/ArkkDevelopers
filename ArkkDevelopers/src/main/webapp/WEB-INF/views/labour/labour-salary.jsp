@@ -36,7 +36,7 @@
                     <select class="form-control" id="siteId" name="siteId" >
            <option>--select--</option>
 							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
-                             <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
+                             <option  value ="${branchSiteDetails.deviceId}">${branchSiteDetails.name }</option>
                              </c:forEach>
                              </select>
                             
@@ -85,12 +85,12 @@
             <h3> Labour Salary Report</h3>
           </div>
           <div class="middle-bg">
-          <div class="table-responsive">
+          <div class="table-responsive exportToExcel">
             <table id="example2" class="table table-bordered table-hover tbl">
               <tr>
                 <th>Sr. No</th>
               
-              
+                <th>Name</th>
                 <th>Date</th>
                 <th>In Time</th>
                 <th>Out Time</th>
@@ -104,12 +104,80 @@
               
                
 				<td>${myIndex.index+1}</td>
-               
+                <td>${getLabourSalaryDetails.name}</td>
                 <td>${getLabourSalaryDetails.date}</td>	
                 <td>${getLabourSalaryDetails.inTime}</td>
              	<td>${getLabourSalaryDetails.outTime}</td>
-                              <td>${getLabourSalaryDetails.workingHour}</td>
-                              	 <td>${getLabourSalaryDetails.amount}</td>
+                <td>${getLabourSalaryDetails.workingHour}</td>
+                <td>${getLabourSalaryDetails.amount}</td>
+                              
+               
+              </tr>
+             </c:forEach>  
+             
+             <tr>
+             <td colspan='6' align="right">Total
+             </td>
+              
+              <td>
+              ${getLabourSalaryDetails.salary }
+             </td>
+             </tr>
+             </tbody>
+               
+             
+               
+               
+               
+               
+            </table>
+            </div>
+            <div class="xbottom-btn">
+             
+              <input type="button" id="labourSalaryButton" class="btn-style mar-top0" value="Export">
+              &nbsp;
+              <input type="button" class="btn-style mar-top0" value="Send To Owner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <!--This table use to display the sitewise salary  -->
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="add-blk">
+          <div class="panel-heading blue">
+            <h3> Labour Salary Report</h3>
+          </div>
+          <div class="middle-bg">
+          <div class="table-responsive exportToExcel">
+            <table id="example2" class="table table-bordered table-hover tbl">
+              <tr>
+                <th>Sr. No</th>
+              
+                <th>Name</th>
+                <th>Date</th>
+                <th>In Time</th>
+                <th>Out Time</th>
+                  <th>Salary/Day</th>
+                
+              </tr>
+             <tbody>
+              <c:forEach items="${getBranchEmployeeReportDetails}" var = "getBranchEmployeeReportDetails" varStatus="myIndex">
+                <tr>
+              
+               
+				<td>${myIndex.index+1}</td>
+                <td>${getBranchEmployeeReportDetails.name}</td>
+                <td>${getBranchEmployeeReportDetails.date}</td>	
+                <td>${getBranchEmployeeReportDetails.inTime}</td>
+             	<td>${getBranchEmployeeReportDetails.outTime}</td>
+ 				<td>${getBranchEmployeeReportDetails.salary}</td>
                               
                
               </tr>
@@ -119,18 +187,22 @@
              <td colspan='5' align="right">Total
              </td>
               
-              <td >
-              ${getLabourSalaryDetails.salary }
+              <td>
+              ${getBranchEmployeeReportDetails.salary }
              </td>
              </tr>
              </tbody>
-                      
+               
+             
+               
+               
+               
+               
             </table>
             </div>
             <div class="xbottom-btn">
-              <input type="button" class="btn-style mar-top0" value="Add">
-              &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Export">
+             
+              <input type="button" id="labourSalaryButton" class="btn-style mar-top0" value="Export">
               &nbsp;
               <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
@@ -139,7 +211,28 @@
       </div>
     </div>
     
+    
+    
+    
+    
+    
+    
+    
+    
     </div></section>
+    
+    <script type="text/javascript">
+	$(function(){
+	
+    $('#labourSalaryButton').click(function(){
+   
+    	var url='data:application/vnd.ms-excel,' + encodeURIComponent($('.exportToExcel').html()) 
+        location.href=url
+        return false
+    })
+})
+</script>
+    
 <%@ include file="../footer.jsp" %>
 <script>
 	$(document).ready(function() {

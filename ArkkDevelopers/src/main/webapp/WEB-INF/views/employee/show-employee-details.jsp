@@ -210,8 +210,7 @@
  
  function editEmpById(empId) {
 	 
-	 $
-		.getJSON(
+	 $.getJSON(
 				'${showEmployeeDetailsById}',
 				{
 					empId : empId,

@@ -128,6 +128,7 @@ $(function () {
         
            <li><a href="${pageContext.request.contextPath}/showLabourDetails"><i class="fa fa-circle-o"></i>Add Labour</a></li>
           <li><a href="${pageContext.request.contextPath}/showGetLabourDetails"><i class="fa fa-circle-o"></i>Show Labour</a></li>
+           <li><a href="${pageContext.request.contextPath}/showManualAttendance"><i class="fa fa-circle-o"></i>Manual Attendance</a></li>
           <li><a href="configuration.html"><i class="fa fa-circle-o"></i>Multiple Site Labour</a></li>
         </ul>
       </li>
