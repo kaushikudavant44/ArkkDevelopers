@@ -27,7 +27,7 @@ public class GetBranchEmployeeReportDetails {
 	
 	
 	private String inTime;
-	
+	 
 	
 	private String outTime;
  
