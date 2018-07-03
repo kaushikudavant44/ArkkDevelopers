@@ -18,7 +18,7 @@
                   <div class="form-line">
                   
                     <label for="exampleInputEmail1">Labour Id :</label>
-                    <input type="number" class="form-control" name="labourId" id="labourId" placeholder="Labour Id">
+                    <input type="number" class="form-control" name="labourId" id="labourId" placeholder="Labour Id" onkeypress='return IsNumeric(event)'>
                   </div>
                   </div>
                 </div>
@@ -26,7 +26,7 @@
                   <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Name :</label>
-                    <input type="text" class="form-control" id="name" name="labourName" placeholder="Full name">
+                    <input type="text" class="form-control" id="name" name="labourName" placeholder="Full name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                   </div>
                   </div>
                 </div>              
@@ -34,7 +34,7 @@
                  <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Mobile Number :</label>
-                    <input type="text" class="form-control" name="mobileNumber" id="labourId" placeholder="Mobile Number">
+                    <input type="text" class="form-control" name="mobileNumber" id="labourId" placeholder="Mobile Number" onkeypress='return IsNumeric(event)'>
                   </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@
                   <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Device Id :</label>
-                     <input type="text" class="form-control"  id="deviceId" name="deviceId" placeholder="Device Id" readonly>
+                     <input type="text" class="form-control"  id="deviceId" name="deviceId" placeholder="Device Id" readonly onkeypress='return IsNumeric(event)'>
                   </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                   <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Salary :</label>
-                    <input type="text" class="form-control" id="salary" name="salary" placeholder="Salary">
+                    <input type="text" class="form-control" id="salary" name="salary" placeholder="Salary" onkeypress='return IsNumeric(event)'>
                   </div>
                   </div>
                 </div>
@@ -112,6 +112,17 @@
   </div>
 </section>
 
+<script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        function IsNumeric(e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1 || keyCode==9);
+            //document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+       
+    </script>
 
 <!-- <script type="text/javascript">
 function getDeviceIdByBranch(){
