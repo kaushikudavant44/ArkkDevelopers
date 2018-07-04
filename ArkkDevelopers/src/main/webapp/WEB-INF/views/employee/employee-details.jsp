@@ -1,5 +1,5 @@
 
-<%@ include file="../new-header.jsp" %>
+<%@ include file="../header.jsp" %>
 <section class="content index">
   <div class="1middle-bg">
     <div class="row">
@@ -70,10 +70,12 @@
                   <div class="form-group">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Branch :</label>
-                    <select class="form-control" id="branch" name="branch">
-                      <option>-- please Select --</option>
-                      <option>aark</option>
-                    </select>
+                    <select class="form-control" id="branch" name="branch" >
+           <option>--select--</option>
+							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
+                             <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
+                             </c:forEach>
+                             </select>
                     </div>
                   </div>
                 </div>
