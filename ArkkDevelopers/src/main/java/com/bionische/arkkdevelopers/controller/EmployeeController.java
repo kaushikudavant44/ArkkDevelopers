@@ -369,6 +369,7 @@ public class EmployeeController {
 	String empId=request.getParameter("empId");
 	String branchId=request.getParameter("branchId");
 	String monthId=request.getParameter("monthId");
+	System.out.println("hdhehdjehd:"+empId+monthId);
 	
 	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
 	
