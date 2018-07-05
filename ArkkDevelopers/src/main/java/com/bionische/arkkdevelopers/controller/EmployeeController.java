@@ -342,7 +342,7 @@ public class EmployeeController {
 	String from=request.getParameter("from");
 	String to=request.getParameter("to");
 	
-	System.out.println("gvvvvvvvvvvvvvv:"+empId+from+to);
+	System.out.println("gvvvvvvvvvvvvvv:"+empId+branchId+from+to);
 	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
 	
 	RestTemplate rest=new RestTemplate();
@@ -353,14 +353,15 @@ public class EmployeeController {
 			map.add("empId",empId);
 			map.add("fromDate",from);
 			map.add("toDate",to);
-			employeeReportDetails=rest.postForObject(Constants.url+"getEmpAttendenceByEmpIdAndDate",map,List .class);
+			employeeReportDetails=rest.postForObject(Constants.url+"getEmpAttendenceByEmpIdAndDate",map,List.class);
 		}
 		else if(branchId!=null&&branchId!="")
 		{
-			map.add("branchId",branchId);
+			map.add("branch",branchId);
 			map.add("fromDate",from);
 			map.add("toDate",to);
-			employeeReportDetails=rest.postForObject(Constants.url+"getEmployeeDetailsByEmpId",map,List .class);
+			employeeReportDetails=rest.postForObject(Constants.url+"getAttendenceByBranchAndBetweenDate",map,List.class);
+			System.out.println("report:-"+employeeReportDetails.toString());
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();
@@ -370,7 +371,7 @@ public class EmployeeController {
 		
 		model.addObject("branchSiteDetails", branchSiteDetails);
 		model.addObject("employeeReportDetails", employeeReportDetails);
-	System.out.println("employeeReportDetails "+employeeReportDetails.toString());
+	//System.out.println("employeeReportDetails "+employeeReportDetails.toString());
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
 	}

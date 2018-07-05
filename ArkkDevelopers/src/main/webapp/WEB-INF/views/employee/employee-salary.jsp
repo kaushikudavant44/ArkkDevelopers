@@ -2,7 +2,7 @@
 <!-- Main content -->
 <section class="content index">
   <div class="1middle-bg">
-    <div class="row">
+    <div class="xrow">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <!-- <div class="panel-heading blue">
@@ -86,8 +86,8 @@
          
         </div>
       </div>
-      
-      <div class="row">
+      <div class="clearfix"></div>
+      <div class="xrow">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <div class="panel-heading blue">

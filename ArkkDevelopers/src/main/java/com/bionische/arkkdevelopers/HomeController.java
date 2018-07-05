@@ -42,11 +42,11 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/showHome", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView showHome(HttpSession session, HttpServletRequest request) {
 		
 	ModelAndView model=new ModelAndView("index");
 		return model;
-	}
+	}*/
 	
 }

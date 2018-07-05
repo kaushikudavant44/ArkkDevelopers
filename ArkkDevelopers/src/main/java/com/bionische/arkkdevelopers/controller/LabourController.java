@@ -326,7 +326,7 @@ public class LabourController {
 	String siteId=request.getParameter("siteId");
 	String from=request.getParameter("from");
 	String to=request.getParameter("to");
-	System.out.println("LabourId="+userId+"cds"+siteId+"cdsc"+from+"cdsc"+to);
+	System.out.println("LabourId="+userId+siteId+from+to);
 	
 	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
 	
@@ -345,10 +345,11 @@ public class LabourController {
 		}
 		else if(siteId!=null&&siteId!="")
 		{
-			map.add("userId",userId);
+			map.add("site",siteId);
 			map.add("from",from);
 			map.add("to",to);
-			getLabourReportDetailsList=rest.postForObject(Constants.url+"getEmpAttendenceByLabourIdAndDate",map,List .class);
+			getLabourReportDetailsList=rest.postForObject(Constants.url+"getAttendenceBySiteAndBetweenDate",map,List .class);
+			System.out.println("Report"+getLabourReportDetailsList.toString());
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();

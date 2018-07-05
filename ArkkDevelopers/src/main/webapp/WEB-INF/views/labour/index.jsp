@@ -1,4 +1,4 @@
-      <%@ include file="../header.jsp" %>
+      <%@ include file="../new-header.jsp" %>
        
        <!-- Main content -->
 <section class="content index">

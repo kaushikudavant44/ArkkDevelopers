@@ -32,7 +32,23 @@
             });
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+    $(function () {
+        $('.datepicker1').datepicker({
+        	closeOnDateSelect: true,
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+    }); 
+    /* $(function () {
+        $('.datepicker1').datetimepicker({
+            format: 'yyyy-mm-dd hh:mm:ss'}).on('changeDate', function(e){
+                $(this).datetimepicker('hide');
+            }); */
     
+    </script>
     
 <%-- <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>  --%>
 

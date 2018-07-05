@@ -1,11 +1,11 @@
 <%@ include file="../new-header.jsp" %>
 <section class="content index">
   <div class="1middle-bg">
-    <div class="row">
+    <div class="xrow">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <div class="panel-heading blue">
-            <h3>Add Employee</h3>
+            <h3>Add Labour</h3>
           </div>
           <div class="middle-bg">
             <form name="myForm" action="${pageContext.request.contextPath}/saveLabourDetails" method="post">

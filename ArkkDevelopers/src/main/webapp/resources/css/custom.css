@@ -177,8 +177,8 @@ ol.breadcrumb1 {
 .edit-modal { margin:0 auto; width:50%;}
 
 .black-bg { background:#f7f7f7} 
-.datepicker th {background: #007dcd; color: #fff; text-align: center; padding: 8px !important;}
-.datepicker td { padding: 8px !important; text-align: center; border: solid 1px #eee;}
+.datepicker th {background: #007dcd; color: #fff; text-align: center; padding: 8px !important; cursor: pointer;}
+.datepicker td { padding: 8px !important; text-align: center; border: solid 1px #eee; cursor: pointer;}
 .datepicker td:hover {border-radius: 50px; background: #eee; color: #000;}
 .datepicker .active { background: #eee; border-radius: 50px}
 

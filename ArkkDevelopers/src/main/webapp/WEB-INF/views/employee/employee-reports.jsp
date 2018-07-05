@@ -35,7 +35,7 @@
                     <select class="form-control" id="branchId" name="branchId" >
            <option>--select--</option>
 							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
-                             <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
+                             <option  value ="${branchSiteDetails.deviceId}">${branchSiteDetails.name }</option>
                              </c:forEach>
                              </select>
                             </label>

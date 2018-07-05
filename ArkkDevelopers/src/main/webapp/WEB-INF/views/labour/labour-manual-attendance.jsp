@@ -39,12 +39,12 @@
 		
 		
 	</section>
-
+<div class="clearfix"></div>
 	
 	 <section class="content index">
     
 			<div class="1middle-bg" id="myModel"> 
-			<div class="row"> 
+			<div class="xrow"> 
 				<div class="col-md-12 col-sm-12">
 				<div class="add-blk">
 				<div class="panel-heading blue"><h3>Manaul Attendance</h3></div>
@@ -149,6 +149,7 @@
 
  <script>
 	 function getLabourDetailsById(){
+		 alert("hi");
 		 var labourId=document.getElementById("labourId").value;
 		 
 		 $.getJSON('${getLabourDetailsById}',
