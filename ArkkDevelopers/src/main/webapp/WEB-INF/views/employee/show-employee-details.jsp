@@ -13,7 +13,7 @@
         <input placeholder="Enter Employee Id ..." class="form-control" type="text" name="getEmpId" id="getEmpId">
         <span class="glyphicon glyphicon-search search-icon"></span> 
         </div>
-        </div>
+        </div> 
         </div>
         <div class="col-md-2">
         <input class="btn-style mar-top0" type="submit" onclick="getEmployeeById()">

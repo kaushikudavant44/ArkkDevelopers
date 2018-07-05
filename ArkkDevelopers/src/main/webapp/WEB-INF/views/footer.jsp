@@ -1,4 +1,39 @@
+ 
 
+    <!-- Popper.JS -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" ></script>-->
+    <!-- Bootstrap JS -->
+	
+	
+	
+
+    
+    
+    
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.slimscroll.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/json-utils.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/date-util.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>	
+	<script src="${pageContext.request.contextPath}/resources/js/DataStructure.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/UserInfo.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/StatisticsInfo.js"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/msg.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/popup.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    
+    
 <%-- <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>  --%>
 
 <!--<script src="js/jquery.dataTables.min.js"></script> -->

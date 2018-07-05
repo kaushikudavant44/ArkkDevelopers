@@ -30,7 +30,7 @@ import com.bionische.arkkdevelopers.model.LabourDetails;
  * 
  * @author Jarves
  *
- */
+ */ 
 @Controller
 public class LabourController {
 	RestTemplate rest=new RestTemplate();

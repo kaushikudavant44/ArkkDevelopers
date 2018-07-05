@@ -46,7 +46,7 @@ public class EmployeeController {
 	RestTemplate rest=new RestTemplate();
 	try {
 		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",map,List .class);
-	
+	 
 		
 	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
 	model.addObject("branchSiteDetails", branchSiteDetails);

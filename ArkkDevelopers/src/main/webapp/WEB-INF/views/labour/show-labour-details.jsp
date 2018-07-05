@@ -219,9 +219,9 @@ function getLabourBySite() {
 																			 var tr = $('<tr id="labourDetailTable"></tr>');
 																			 tr.append($('<td></td>').html(data.labourDetailsId));
 																			 tr.append($('<td></td>').html(data.labourId));
-																			 tr.append($('<td></td>').html(data.name));
+			  																 tr.append($('<td></td>').html(data.name));
 																			 tr.append($('<td></td>').html(data.deviceId));
-																			 tr.append($('<td></td>').html(data.mobileNo));
+								 											 tr.append($('<td></td>').html(data.mobileNo));
 																			 tr.append($('<td></td>').html(data.gender)); 
 																			 tr.append($('<td></td>').html(data.address));
 																			 tr.append($('<td></td>').html(data.site));

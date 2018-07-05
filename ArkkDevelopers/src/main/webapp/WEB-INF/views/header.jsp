@@ -33,7 +33,6 @@
 
 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" charset="UTF-8"></script> 
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
@@ -143,8 +142,7 @@ $(function () {
           <li><a href="${pageContext.request.contextPath}/getLabourReport"><i class="fa fa-circle-o"></i>Attendance Report</a></li>
           <li><a href="${pageContext.request.contextPath}/getLabourSalary"><i class="fa fa-circle-o"></i>Salary Report</a></li>
         </ul>
-      </li>
-      
+      </li> 
     </ul>
   </section>
 </aside>

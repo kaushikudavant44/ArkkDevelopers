@@ -13,7 +13,7 @@
 								<div class="form-group">
 							<label for="exampleInputEmail1">Employee/Labour Id :</label>
 							
-							 <input type="text" class="form-control" name="id" id="id" >
+							 <input type="text" class="form-control" name="userId" id="userId" >
 							 
 							                             
 							</div>
@@ -40,6 +40,29 @@
 	</section>
 	<script>
 	function openEmployeeLabourDetails(){
+		var userId=document.getElementById("userId").value;
+		
+		$.getJSON('${getEmployeeLabourRecordById}',
+				{
+			
+			userId : userId,
+					
+			ajax : 'true'
+
+				},function(data) {
+					document.getElementById("editLabourId").value=data.labourId;
+					document.getElementById("editLabourDetailsId").value=data.labourId;
+					document.getElementById("editName").value=data.name;
+					document.getElementById("editMobileNumber").value=data.mobileNo;
+					document.getElementById("editSalary").value=data.salary;
+					document.getElementById("editAddress").value=data.address;
+					document.getElementById("editDeviceId").value=data.deviceId;
+					document.getElementById("editSite").value=data.site;
+					document.getElementById("editGender").value=data.gender;
+				})
+		
+
+		
 		$('#myModal').modal('show');
 		
 		
