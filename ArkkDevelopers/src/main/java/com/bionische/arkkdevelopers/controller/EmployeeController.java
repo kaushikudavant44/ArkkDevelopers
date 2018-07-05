@@ -38,8 +38,27 @@ public class EmployeeController {
 	public ModelAndView showEmployeeRegistration(HttpSession session, HttpServletRequest request) {
 		
 	ModelAndView model=new ModelAndView("employee/employee-details");
+	
+	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("type",1);
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+		branchSiteDetails=rest.postForObject(Constants.url+"getBranchSiteDetailsByType",map,List .class);
+	
+		
+	System.out.println("branchSiteDetails "+branchSiteDetails.toString());
+	model.addObject("branchSiteDetails", branchSiteDetails);
+	
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+	
 		return model;
 	}
+	
+	
 	@RequestMapping(value = "/showAllEmployee", method = RequestMethod.GET)
 	public ModelAndView showAllEmployee(HttpSession session, HttpServletRequest request) {
 		
@@ -68,15 +87,15 @@ public class EmployeeController {
 	{
 		
 		System.out.println("came");
-		String url=null;
+		String url="/showAllEmployee";
 		ModelAndView model =new ModelAndView("employee/employee-details");
 		
 		EmployeeDetails employeeDetails=new EmployeeDetails();
 		
-		String profilePhotoName=null;
-		String documentName=null;
+		/*String profilePhotoName=null;
+		String documentName=null;*/
 	
-	try {
+	/*try {
 				VpsImageUpload vpsImageUpload=new VpsImageUpload();
 				 profilePhotoName=photo.get(0).getOriginalFilename();
 				
@@ -97,7 +116,7 @@ public class EmployeeController {
 		catch (IOException e1) {
 			 
 			e1.printStackTrace();
-		}
+		}*/
 	
 		
 		employeeDetails.setEmpId(Integer.parseInt(req.getParameter("empId")));
@@ -111,8 +130,8 @@ public class EmployeeController {
 		employeeDetails.setSalary(Integer.parseInt(req.getParameter("salary")));
 		employeeDetails.setMobileNo((req.getParameter("mobileNo")));
 		employeeDetails.setEmail(req.getParameter("email"));
-		employeeDetails.setPhoto(profilePhotoName);
-		employeeDetails.setDocument(documentName);
+	//	employeeDetails.setPhoto(profilePhotoName);
+	//	employeeDetails.setDocument(documentName);
 		employeeDetails.setInt1(0);
 		employeeDetails.setInt2(0);
 		employeeDetails.setString1("1");
@@ -156,6 +175,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/showEmployeeDetailsById", method = RequestMethod.GET)
 	public @ResponseBody EmployeeDetails showEmployeeDetailsById(HttpSession session, HttpServletRequest request) {
 		
+		System.out.println("came");
 	ModelAndView model=new ModelAndView("employee/show-employee-details");
 	 EmployeeDetails employeeDetails=new EmployeeDetails();
 	 

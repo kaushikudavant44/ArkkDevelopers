@@ -1,10 +1,12 @@
-<%@ include file="../header.jsp" %>
+<%@ include file="../new-header.jsp" %>
+
 <section class="content index">
 <c:url var="showEmployeeDetailsByBranch" value="/showEmployeeDetailsByBranch" />
 <c:url var="showEmployeeDetailsById" value="/showEmployeeDetailsById" />
 <c:url var="deleteEmployeeDetailsById" value="/deleteEmployeeDetailsById" />
-  <div class="middle-bg">
-    <div class="row">
+
+  <div class="1middle-bg">
+    <div class="xrow">
       <div class="col-md-4">
       <div class="form-group">
                         <div class="form-line">
@@ -23,7 +25,7 @@
            <select class="form-control" id="getBranch" name="getBranch" onchange="getEmployeeByBranch()">
            <option>--select branch--</option>
 							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
-                             <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
+                             <option  value ="${branchSiteDetails.branchSiteId}">${branchSiteDetails.name }</option>
                              </c:forEach>
                              </select>
               </div>
@@ -31,8 +33,8 @@
        </div>
     </div>
     </div>
-    
-    <div class="row">
+   
+    <div class="xrow">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk" id="employeeTable">
           <div class="panel-heading blue">
@@ -80,7 +82,7 @@
             <div class="xbottom-btn">
            
               <input type="button" id="employee" class="btn-style mar-top0" value="Export">
-              &nbsp;
+             
               <input type="button" class="btn-style mar-top0" value="Send To Owner">
             </div>
           </div>
@@ -90,6 +92,101 @@
  
 </section>
 
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+         <form action="updateEmployeeDetails" method="post">
+               <input type="hidden" class="form-control" name="empId" id="editId">
+               <input type="hidden" class="form-control" name="empDetailsId" id="editDetailsId">
+               <input type="hidden" class="form-control" name="photo" id="editPhoto">
+               <input type="hidden" class="form-control" name="document" id="editDocument">
+               <input type="hidden" class="form-control" name="branch" id="editBranch">
+                <input type="hidden" class="form-control" name="deviceId" id="editDeviceId">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Employee Name :</label>
+                    <input type="text" class="form-control" name="name" id="editName" placeholder="Name">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Gender :</label>
+                    <input type="text" class="form-control" name="gender" id="editGender" placeholder="Gender">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">DOB :</label>
+                    <input type="text" class="form-control" name="dob" id="editDOB" placeholder="dob">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Mobile No :</label>
+                    <input type="text" class="form-control" name="mobileNo" id="editNo" placeholder="Mobile No">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Email :</label>
+                    <input type="text" class="form-control" name="email" id="editEmail" placeholder="Email">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Designation :</label>
+                    <input type="text" class="form-control" name="designation" id="editDesignation" placeholder="Designation">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Salary :</label>
+                    <input type="text" class="form-control" name="salary" id="editSalary" placeholder="Salary">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                   <div class="form-line">
+                    <label for="exampleInputEmail1">Address :</label>
+                    <textarea class="form-control" placeholder="Address " id="editAddress" name="address" rows="1" col="3"></textarea>
+                  </div>
+                  </div>
+                  </div>
+                   <div class="col-md-12 col-sm-12"><input type="submit" class="btn-style" value="save"></div>
+                  
+                </form>
+                </div>
+                
+      </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+<%@ include file="../footer.jsp" %>
 <script>
 
  function getEmployeeByBranch() {
@@ -97,9 +194,7 @@
 		 var branchId=document.getElementById("getBranch").value; 
 		 $('#example2 td').remove();
 		  
-		 $
-														.getJSON(
-																'${showEmployeeDetailsByBranch}',
+		 $.getJSON('${showEmployeeDetailsByBranch}',
 																{
 																	branchId : branchId,
 																	
@@ -143,7 +238,7 @@
 <script>
 
  function getEmployeeById() {
-											 
+		alert("hi");
 		 var empId=document.getElementById("getEmpId").value; 
 		 $('#example2 td').remove();
 		 $('#getBranch option:eq(0)').prop('selected', 'selected');
@@ -240,101 +335,6 @@
 	 
 }
 	</script>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-         <div class="row">
-         <form action="updateEmployeeDetails" method="post">
-               <input type="hidden" class="form-control" name="empId" id="editId">
-               <input type="hidden" class="form-control" name="empDetailsId" id="editDetailsId">
-               <input type="hidden" class="form-control" name="photo" id="editPhoto">
-               <input type="hidden" class="form-control" name="document" id="editDocument">
-               <input type="hidden" class="form-control" name="branch" id="editBranch">
-                <input type="hidden" class="form-control" name="deviceId" id="editDeviceId">
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Employee Name :</label>
-                    <input type="text" class="form-control" name="name" id="editName" placeholder="Name">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Gender :</label>
-                    <input type="text" class="form-control" name="gender" id="editGender" placeholder="Gender">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">DOB :</label>
-                    <input type="text" class="form-control" name="dob" id="editDOB" placeholder="dob">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Mobile No :</label>
-                    <input type="text" class="form-control" name="mobileNo" id="editNo" placeholder="Mobile No">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Email :</label>
-                    <input type="text" class="form-control" name="email" id="editEmail" placeholder="Email">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Designation :</label>
-                    <input type="text" class="form-control" name="designation" id="editDesignation" placeholder="Designation">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Salary :</label>
-                    <input type="text" class="form-control" name="salary" id="editSalary" placeholder="Salary">
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                   <div class="form-line">
-                    <label for="exampleInputEmail1">Address :</label>
-                    <textarea class="form-control" placeholder="Address " id="editAddress" name="address" rows="1" col="3"></textarea>
-                  </div>
-                  </div>
-                  </div>
-                   <div class="col-md-12 col-sm-12"><input type="submit" class="btn-style" value="save"></div>
-                  
-                </form>
-                </div>
-                
-      </div>
-      </div>
-      
-    </div>
-  </div>
-
-
-<%@ include file="../footer.jsp" %>
-
 <script type="text/javascript">
 	$(function(){
 	

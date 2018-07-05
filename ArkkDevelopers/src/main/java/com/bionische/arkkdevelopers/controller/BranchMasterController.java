@@ -7,13 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bionische.arkkdevelopers.common.Constants;
 import com.bionische.arkkdevelopers.model.BranchSiteDetails;
+import com.bionische.arkkdevelopers.model.Info;
 
 @Controller
 public class BranchMasterController {
@@ -21,13 +25,18 @@ public class BranchMasterController {
 	
 	
 	RestTemplate rest=new RestTemplate();
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/showBranchMaster", method = RequestMethod.GET)
 	public ModelAndView showBranchMaster(HttpSession session, HttpServletRequest request) {
 		
 		ModelAndView model=new ModelAndView("masters/branch_master");
 		List<BranchSiteDetails> branchSiteDetailsList=new ArrayList<BranchSiteDetails>();
 		try {
-			branchSiteDetailsList =rest.getForObject(Constants.url+"getEmployeeDetailsByBranch/", List.class);
+			branchSiteDetailsList =rest.getForObject(Constants.url+"getAllBranchAndSiteDetails/", List.class);
 			System.out.println("branchSiteDetailsList  "+branchSiteDetailsList.toString());
 			
 			model.addObject("branchSiteDetailsList", branchSiteDetailsList);
@@ -51,8 +60,8 @@ public class BranchMasterController {
 		branchSiteDetails.setAddress(request.getParameter("address"));
 		branchSiteDetails.setContact(request.getParameter("mobile_no"));
 		branchSiteDetails.setDate(request.getParameter("date"));
-		branchSiteDetails.setInt_1(0);
-		branchSiteDetails.setInt_2(0);
+		branchSiteDetails.setInt1(0);
+		branchSiteDetails.setInt2(0);
 		branchSiteDetails.setName(request.getParameter("name"));
 		branchSiteDetails.setDeviceId(Integer.parseInt(request.getParameter("deviceId")));
 		branchSiteDetails.setString_1("");
@@ -74,5 +83,35 @@ public class BranchMasterController {
 	
 		return "redirect:/showBranchMaster";
 	} 
+	
+	/**
+	 * 
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/deleteBranchById", method = RequestMethod.GET)
+	public @ResponseBody Info deleteBranchById(HttpSession session, HttpServletRequest request) {
+		
+	System.out.println("aja");
+	ModelAndView model=new ModelAndView("masters/branch_master");
+	Info info=new Info();
+	 
+	 String branchSiteId=request.getParameter("branchSiteId");
+
+	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
+	map.add("branchSiteId",""+branchSiteId);
+	
+	RestTemplate rest=new RestTemplate();
+	try {
+	 info=rest.postForObject(Constants.url+"deleteBranchSite",map,Info.class);
+	
+	System.out.println("Info Details "+info);
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+		return info;
+	}	
+	
 	
 }

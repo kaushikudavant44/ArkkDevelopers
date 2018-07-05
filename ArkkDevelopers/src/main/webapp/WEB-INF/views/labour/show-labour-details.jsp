@@ -1,4 +1,4 @@
-<%@ include file="../header.jsp" %>
+<%@ include file="../new-header.jsp" %>
 
 <c:url var="getLabourDetailsById" value="/getLabourDetailsById" />
 <c:url var="showLabourDetailsBySite" value="/showLabourDetailsBySite" />
@@ -6,10 +6,10 @@
 <c:url var="editLabourRecordById" value="/editLabourRecordById" />
 
 <section class="content index">
-  <div class="middle-bg">
+  <div class="1middle-bg">
     
     
-    <div class="row">
+    <div class="xrow">
       <div class="col-md-5">
       <div class="form-group">
         <div class="form-line">
@@ -33,7 +33,7 @@
                     <select class="form-control" id="site" name="site" onchange="getLabourBySite()">
                     <option>--select---</option>
                       <c:forEach items="${branchSiteDetailsList}" var = "branchSiteDetailsList">
-                             <option  value ="${branchSiteDetailsList.type}">${branchSiteDetailsList.name}</option>
+                             <option  value ="${branchSiteDetailsList.branchSiteId}">${branchSiteDetailsList.name}</option>
                              </c:forEach>
                       
                     </select>
@@ -43,7 +43,7 @@
 
     </div>
       </div>
-    <div class="row">
+    <div class="xrow">
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <div class="panel-heading blue">
@@ -99,9 +99,72 @@
     </div>
 
 </section>
+
+ <form action="${pageContext.request.contextPath}/saveLabourDetails" method="post">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+  	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+               
+                    <input type="hidden" class="form-control" name="labourId" id="editLabourId">
+                    <input type="hidden" class="form-control" name="gender" id="editGender" placeholder="Enter name">
+                    <input type="hidden" class="form-control" name="editLabourDetailsId" id="editLabourDetailsId" placeholder="Enter name">
+                    <input type="hidden" class="form-control" name="deviceId" id="editDeviceId" placeholder="Enter name">
+                  	<input type="hidden" class="form-control" name="site" id="editSite" placeholder="Enter name">
+                  	
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Name :</label>
+                    <input type="text" class="form-control" name="labourName" id="editName" placeholder="Enter name">
+                  </div>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Mobile Number :</label>
+                    <input type="text" class="form-control" name="mobileNumber" id="editMobileNumber" placeholder="Enter Mobile Number">
+                  </div>
+                  </div>
+                 
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">salary :</label>
+                    <input type="text" class="form-control" name="salary" id="editSalary" placeholder="Enter Salary">
+                  </div>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Address :</label>
+                    <input type="text" class="form-control" name="address" id="editAddress" placeholder="Enter Address">
+                  </div>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                  <input type="submit" class="form-control">
+                  </div>
+                  </div>
+                </div>   
+      </div>
+      </div>
+      
+    </div>
+   
+  </div>
+ </form>
+<%@ include file="../footer.jsp" %>
+
 <script>
 function getLabourDetailsById(){
 		var labourId=document.getElementById("labourId").value;
+		
 		$('#labourDetailTableId td').remove();
 	   $.getJSON('${getLabourDetailsById}',
 				{
@@ -110,7 +173,7 @@ function getLabourDetailsById(){
 
 					ajax : 'true',
 				},function(data) {
-								
+								alert(data.labourId);
 					 			 var tr = $('<tr id="labourDetailTable"></tr>');
 								 tr.append($('<td></td>').html(data.labourDetailsId));
 								 tr.append($('<td></td>').html(data.labourId));
@@ -136,6 +199,7 @@ function getLabourBySite() {
 	 
 	
 	var siteId=document.getElementById("site").value; 
+	alert(""+siteId);
 	 $('#labourDetailTableId td').remove();
 	$('#site option:eq(0)').prop('selected', 'selected');	
 		  
@@ -215,66 +279,7 @@ function editLabourById(labourId) {
 	}				
 
 </script>
- <form action="${pageContext.request.contextPath}/saveLabourDetails" method="post">
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
-  	<div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-         <div class="row">
-               
-                    <input type="hidden" class="form-control" name="labourId" id="editLabourId">
-                    <input type="hidden" class="form-control" name="gender" id="editGender" placeholder="Enter name">
-                    <input type="hidden" class="form-control" name="editLabourDetailsId" id="editLabourDetailsId" placeholder="Enter name">
-                    <input type="hidden" class="form-control" name="deviceId" id="editDeviceId" placeholder="Enter name">
-                  	<input type="hidden" class="form-control" name="site" id="editSite" placeholder="Enter name">
-                  	
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Name :</label>
-                    <input type="text" class="form-control" name="labourName" id="editName" placeholder="Enter name">
-                  </div>
-                  </div>
-                  
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Mobile Number :</label>
-                    <input type="text" class="form-control" name="mobileNumber" id="editMobileNumber" placeholder="Enter Mobile Number">
-                  </div>
-                  </div>
-                 
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">salary :</label>
-                    <input type="text" class="form-control" name="salary" id="editSalary" placeholder="Enter Salary">
-                  </div>
-                  </div>
-                  
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Address :</label>
-                    <input type="text" class="form-control" name="address" id="editAddress" placeholder="Enter Address">
-                  </div>
-                  </div>
-                  
-                  <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                  <input type="submit" class="form-control">
-                  </div>
-                  </div>
-                </div>   
-      </div>
-      </div>
-      
-    </div>
-   
-  </div>
- </form>
-<%@ include file="../footer.jsp" %>
 <script type="text/javascript">
 	$(function(){
 	

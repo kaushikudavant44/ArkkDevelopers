@@ -1,5 +1,6 @@
 
-<%@ include file="../header.jsp" %>
+<%@ include file="../new-header.jsp" %>
+<%@ include file="../footer.jsp" %>
 <section class="content index">
   <div class="1middle-bg">
     <div class="row">
@@ -73,7 +74,7 @@
                     <select class="form-control" id="branch" name="branch" >
            <option>--select--</option>
 							 <c:forEach items="${branchSiteDetails}" var = "branchSiteDetails">
-                             <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name }</option>
+                             <option  value ="${branchSiteDetails.type}">${branchSiteDetails.name}</option>
                              </c:forEach>
                              </select>
                     </div>
@@ -104,7 +105,7 @@
                   </div>
                 </div>
                 
-               <div class="col-md-4 col-sm-4">
+               <!-- <div class="col-md-4 col-sm-4">
                   <div class="form-group upload-blk">
                   <div class="form-line">
                     <label for="exampleInputEmail1">Upload Photo </label>
@@ -119,7 +120,7 @@
                     <input type="file" class="hide_file" id="document" name="document" placeholder="Upload Document" accept="image/*">
                   </div>
                   </div>
-                </div>
+                </div>  -->
                 <div class="col-md-12 col-sm-12">
                   <div class="form-group">
                   <div class="form-line">
@@ -156,4 +157,3 @@
 
 
 
-<%@ include file="../footer.jsp" %>
