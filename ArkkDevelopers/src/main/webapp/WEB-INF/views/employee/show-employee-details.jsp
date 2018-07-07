@@ -10,7 +10,7 @@
       <div class="col-md-4">
       <div class="form-group">
                         <div class="form-line">
-        <input placeholder="Enter Employee Id ..." class="form-control" type="text" name="getEmpId" id="getEmpId">
+        <input placeholder="Enter Employee Id" class="form-control" type="text" name="getEmpId" id="getEmpId">
         <span class="glyphicon glyphicon-search search-icon"></span> 
         </div>
         </div> 
@@ -83,7 +83,7 @@
            
               <input type="button" id="employee" class="btn-style mar-top0" value="Export">
              
-              <input type="button" class="btn-style mar-top0" value="Send To Owner">
+              <!-- <input type="button" class="btn-style mar-top0" value="Send To Owner"> -->
             </div>
           </div>
         </div>

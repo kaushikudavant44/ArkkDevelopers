@@ -58,7 +58,12 @@ public class EmployeeController {
 		return model;
 	}
 	
-	
+	/**
+	 * 
+	 * @param session
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/showAllEmployee", method = RequestMethod.GET)
 	public ModelAndView showAllEmployee(HttpSession session, HttpServletRequest request) {
 		
@@ -386,10 +391,12 @@ public class EmployeeController {
 	List<GetEmployeeSalaryDetails> getEmployeeSalaryDetails=new ArrayList<GetEmployeeSalaryDetails>();
 	List<BranchSiteDetails> branchSiteDetails=new ArrayList<BranchSiteDetails>();
 	
-	
+	//List<GetEmployeeSalaryByBranch> getEmployeeSalaryByBranchList=new ArrayList<GetEmployeeSalaryByBranch>();
 	String empId=request.getParameter("empId");
 	String branchId=request.getParameter("branchId");
 	String monthId=request.getParameter("monthId");
+	String fromDate=request.getParameter("from");
+	String toDate=request.getParameter("to");
 	System.out.println("hdhehdjehd:"+empId+monthId);
 	
 	MultiValueMap<String, Object> map=new LinkedMultiValueMap<String, Object>();
@@ -408,7 +415,7 @@ public class EmployeeController {
 			map.add("branchId",branchId);
 			map.add("month",monthId);
 			map.add("year",new SimpleDateFormat("yyyy").format(new Date()));
-			getEmployeeSalaryDetails=rest.postForObject(Constants.url+"getEmpSalaryDetails",map,List .class);
+			getEmployeeSalaryDetails=rest.postForObject(Constants.url+"getEmployeeSalaryDetailsByBranch",map,List .class);
 		}
 
 		MultiValueMap<String, Object> mapBranch=new LinkedMultiValueMap<String, Object>();

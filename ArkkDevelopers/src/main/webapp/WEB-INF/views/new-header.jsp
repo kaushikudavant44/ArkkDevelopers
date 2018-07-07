@@ -33,6 +33,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" charset="UTF-8"></script> 
+<%-- 
 <script>
 $(function () {
     $('.datepicker1').datepicker({
@@ -53,7 +54,7 @@ $(function () {
 	    });
 });
 </script>
-
+ --%>
 
 </head>
 
@@ -82,7 +83,7 @@ $(function () {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Branch Management</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="http://localhost:8010/arkkdevelopers/showBranchMaster">Manage Branch</a>
+                            <a href="${pageContext.request.contextPath}/showBranchMaster">Manage Branch</a>
                         </li>
                         
                     </ul>
@@ -90,18 +91,18 @@ $(function () {
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Employee Management</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="http://localhost:8010/arkkdevelopers/showEmployeeRegistration"> Add Employee</a></li>
-						<li><a href="http://localhost:8010/arkkdevelopers/showAllEmployee"> Show Employee's</a></li>
-						<li><a href="http://localhost:8010/arkkdevelopers/manualAttendanceById"> Manual Attendance</a></li>
+                        <li><a href="${pageContext.request.contextPath}/showEmployeeRegistration"> Add Employee</a></li>
+						<li><a href="${pageContext.request.contextPath}/showAllEmployee"> Show Employee's</a></li>
+						<li><a href="${pageContext.request.contextPath}/manualAttendanceById"> Manual Attendance</a></li>
                     </ul>
                 </li>
 				
 				<li>
                     <a href="#pagelabour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Labour Management</a>
                     <ul class="collapse list-unstyled" id="pagelabour">
-                        <li><a href="http://localhost:8010/arkkdevelopers/showLabourDetails"> Add Labour</a></li>
-						<li><a href="http://localhost:8010/arkkdevelopers/showGetLabourDetails"> Show Labour</a></li>
-						<li><a href="http://localhost:8010/arkkdevelopers/showManualAttendance"> Manual Attendance</a></li>		
+                        <li><a href="${pageContext.request.contextPath}/showLabourDetails"> Add Labour</a></li>
+						<li><a href="${pageContext.request.contextPath}/showGetLabourDetails"> Show Labour</a></li>
+						<li><a href="${pageContext.request.contextPath}/showManualAttendance"> Manual Attendance</a></li>		
 						
                     </ul> 
                 </li>
@@ -109,23 +110,23 @@ $(function () {
 				<li>
                     <a href="#pageReports" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Employee Reports</a>
                     <ul class="collapse list-unstyled" id="pageReports">
-                        <li><a href="http://localhost:8010/arkkdevelopers/getEmployeeReport"> Attendance Report</a></li>
-						<li><a href="http://localhost:8010/arkkdevelopers/getEmployeeSalary"> Salary Report</a></li>
+                        <li><a href="${pageContext.request.contextPath}/getEmployeeReport"> Attendance Report</a></li>
+						<li><a href="${pageContext.request.contextPath}/getEmployeeSalary"> Salary Report</a></li>
                     </ul> 
                 </li>
 				
 				<li>
                     <a href="#LabourReports" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Labour Reports</a>
                     <ul class="collapse list-unstyled" id="LabourReports">
-                        <li><a href="http://localhost:8010/arkkdevelopers/getLabourReport"> Attendance Report</a></li>
-						<li><a href="http://localhost:8010/arkkdevelopers/getLabourSalary"> Salary Report</a></li>
+                        <li><a href="${pageContext.request.contextPath}/getLabourReport"> Attendance Report</a></li>
+						<li><a href="${pageContext.request.contextPath}/getLabourSalary"> Salary Report</a></li>
                     </ul> 
                 </li>
                 
                 <li>
                     <a href="#DeviceManagement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Device Management</a>
                     <ul class="collapse list-unstyled" id="DeviceManagement">
-                       <li><a href="http://localhost:8010/iclock/lang/en/modules/main/dashboard/dashboard.jsp">Device Management</a></li>
+                       <li><a href="http://166.62.32.164:8080/iclock/lang/en/modules/main/dashboard/dashboard.jsp">Device Management</a></li>
 								
                     </ul> 
                 </li>

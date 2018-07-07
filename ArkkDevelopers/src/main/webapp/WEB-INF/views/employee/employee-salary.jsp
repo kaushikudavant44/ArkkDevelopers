@@ -43,10 +43,9 @@
                   </div>
                   </div>
                 </div>
-                            
-                   
-                      <div class="col-md-3 col-sm-3">
-                         <div class="form-group">
+                
+                      <div class="col-md-3 col-sm-3" id="hideMonth1" >
+                         <div class="form-group" >
         					<div class="form-line">
                           <label for="exampleInputEmail1">Select Month :</label>
 <select class="form-control" id="monthId" name="monthId">
@@ -136,26 +135,37 @@
     $("#country").on("change", function() {
         if ($(this).val() === "I") {
             $("#otherName").show();
+           // $("#hideMonth1").show();
+            $("#otherbranch").hide();
+        //    $("#showDatePicker").hide();
+           // document.getElementById("hideMonth1").style.display=""
+            
         }
-        else {
+        else if($(this).val() === "B"){
             $("#otherName").hide();
+           // $("#hideMonth1").show();
+            $("#otherbranch").show();
+            /* $("#showDatePicker").show(); */
         }
     });
 });
 </script>
 
-<script>
+<!-- <script>
 	$(document).ready(function() {
     $("#country").on("change", function() {
         if ($(this).val() === "B") {
             $("#otherbranch").show();
+            $("#showDatePicker").show();
+            
         }
         else {
             $("#otherbranch").hide();
+            $("#showDatePicker").hide();
         }
     });
 });
-</script> 
+</script>  -->
 <script type="text/javascript">
 	$(function(){
 	

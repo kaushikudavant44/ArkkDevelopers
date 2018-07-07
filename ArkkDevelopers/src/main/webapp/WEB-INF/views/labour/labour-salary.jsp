@@ -140,7 +140,7 @@
              
               <input type="button" id="labourSalaryButton" class="btn-style mar-top0" value="Export">
               &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Send To Owner">
+              <!-- <input type="button" class="btn-style mar-top0" value="Send To Owner"> -->
             </div>
           </div>
         </div>

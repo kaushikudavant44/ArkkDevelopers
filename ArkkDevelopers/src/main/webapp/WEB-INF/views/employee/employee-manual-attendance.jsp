@@ -6,7 +6,7 @@
 			<div class="xrow">
 				<div class="col-md-12 col-sm-12">
 				<div class="add-blk">
-				<div class="panel-heading blue"><h3>Manaul Attendance</h3></div>
+				<div class="panel-heading blue"><h3>Manual Attendance</h3></div>
 				<div class="middle-bg">
 					<form action="${pageContext.request.contextPath}/manualAttendanceById" method="GET">
   						<div class="row">
@@ -56,7 +56,7 @@
 			<div class="xrow">
 				<div class="col-md-12 col-sm-12">
 				<div class="add-blk">
-				<div class="panel-heading blue"><h3>Manaul Attendance</h3></div>
+				<div class="panel-heading blue"><h3>Manual Attendance</h3></div>
 				<div class="middle-bg">
 					<form action="${pageContext.request.contextPath}/saveEmployeeManualAttendance" method="POST">
   						<div class="row">

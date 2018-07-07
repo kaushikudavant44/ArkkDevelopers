@@ -13,7 +13,7 @@
       <div class="col-md-5">
       <div class="form-group">
         <div class="form-line">
-        <input name="message" placeholder="Search employee By Id" class="form-control" type="text" id="labourId"> </div>
+        <input name="message" placeholder="Search Labour By Id" class="form-control" type="text" id="labourId"> </div>
         <span class="glyphicon glyphicon-search search-icon"></span> 
     </div>
     </div>
@@ -47,7 +47,7 @@
       <div class="col-md-12 col-sm-12">
         <div class="add-blk">
           <div class="panel-heading blue">
-            <h3> Show All Employees</h3>
+            <h3> Show All Labours</h3>
           </div>
           <div class="middle-bg">
           <div class="table-responsive" id="labourTable">
@@ -91,7 +91,7 @@
              
               <input type="button" id="labour" class="btn-style mar-top0" value="Export">
               &nbsp;
-              <input type="button" class="btn-style mar-top0" value="Send To Owner">
+              <!-- <input type="button" class="btn-style mar-top0" value="Send To Owner"> -->
             </div>
           </div>
         </div>

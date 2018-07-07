@@ -41,6 +41,16 @@
             format: 'yyyy-mm-dd',
             autoclose: true
         });
+        $('.datepicker2').datepicker({
+        	closeOnDateSelect: true,
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+        $('.datepicker3').datepicker({
+        	closeOnDateSelect: true,
+            format: 'yyyy-mm',
+            autoclose: true
+        });
     }); 
     /* $(function () {
         $('.datepicker1').datetimepicker({
